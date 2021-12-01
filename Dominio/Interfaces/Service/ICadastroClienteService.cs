@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dominio.Interfaces.Aplicações
+namespace Dominio.Interfaces.Service
 {
     public interface ICadastroClienteService
     {
