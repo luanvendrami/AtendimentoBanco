@@ -1,4 +1,4 @@
-﻿using Dominio.Interfaces.Aplicações;
+﻿using Dominio.Interfaces.Service;
 using Dominio.Modelos;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 namespace AtendimentoBanco.Controllers
 {
     [ApiController, Route("[controller]")]
-    [Consumes("application/json")]
-    public class CadastroClientesControllers : Controller
+    public class CadastroClientesControllers : ControllerBase
     {
         private readonly ICadastroClienteService _cadastroClienteService;
 
@@ -19,21 +18,17 @@ namespace AtendimentoBanco.Controllers
             _cadastroClienteService = cadastroClienteService;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         [HttpPost]
-        public ActionResult CadastroCliente(ClienteDto dto)
+        public ActionResult CadastroCliente([FromForm]ClienteDto dto)
         {
             try
             {
                var retorno = _cadastroClienteService.CadastroCliente(dto);
                 return Ok(retorno);
             }
-            catch
+            catch(Exception ex)
             {
+                var error = ex;
                 return BadRequest("As informações NÃO foram salvas!");        
             }
         }

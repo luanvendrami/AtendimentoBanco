@@ -1,6 +1,6 @@
 ﻿using Dominio.Entidades;
-using Dominio.Interfaces.Aplicações;
 using Dominio.Interfaces.Repositorio;
+using Dominio.Interfaces.Service;
 using Dominio.Modelos;
 using System;
 using System.Collections.Generic;
@@ -12,20 +12,19 @@ namespace CadastroCliente.Service
 {
     public class CadastroClienteService : ICadastroClienteService
     {
-        private readonly IInformacaoClienteRepositorio _informacaoClienteRepositorio;
+        private readonly ICadastroClienteRepositorio _informacaoClienteRepositorio;
 
-        public CadastroClienteService(IInformacaoClienteRepositorio informacaoClienteRepositorio)
+        public CadastroClienteService(ICadastroClienteRepositorio informacaoClienteRepositorio)
         {
             _informacaoClienteRepositorio = informacaoClienteRepositorio;
         }
 
         public string CadastroCliente(ClienteDto dto)
         {
-            var entidadeInformacaoCliente = new InformacaoCliente(dto.Id, dto.NomeCompleto, dto.Cpf, dto.Rg, dto.DataNascimento, dto.Cep);
+            var entidadeInformacaoCliente = new DadosCliente(dto.NomeCompleto, dto.Cpf, dto.Rg, dto.DataNascimento);
             if (entidadeInformacaoCliente.Validacao())
             {
                 _informacaoClienteRepositorio.Adicionar(entidadeInformacaoCliente);
-                _informacaoClienteRepositorio.SalvarAlteracao();
                 return $"Cliente cadastrado com sucesso!";
             }
             else
