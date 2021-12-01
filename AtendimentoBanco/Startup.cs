@@ -30,12 +30,13 @@ namespace AtendimentoBanco
         public void ConfigureServices(IServiceCollection services)
         {
             services.ConexaoBanco();
-            services.InjeçãoServices();
-            services.AddControllers();
+            services.InjeçaoServices();
+            services.InjeçaoRepositorio();
 
-            services.AddDbContext<Contexto>(options =>
+            services.AddDbContext<ContextoSQL>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("Contexto")));
 
+            services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AtendimentoBanco", Version = "v1" });
@@ -45,6 +46,7 @@ namespace AtendimentoBanco
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseDeveloperExceptionPage();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
