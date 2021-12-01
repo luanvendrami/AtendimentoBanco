@@ -9,24 +9,24 @@ using Dominio.Interfaces.Repositorio.BaseRepositorio;
 
 namespace Infra.Data.Repositorio.BaseRepositorio
 {
-    public abstract class BaseRepositorio<T> : IBaseRepositorio<T> where T : class, new()
+    public abstract class BaseRepositorio<TEntity> : IBaseRepositorio<TEntity> where TEntity : class, new()
     {
         protected readonly ContextoSQL _context;
-        private readonly DbSet<T> _dbSet;
+        private readonly DbSet<TEntity> _dbSet;
 
         public BaseRepositorio(ContextoSQL context)
         {
             _context = context;
-            _dbSet = _context.Set<T>();
+            _dbSet = _context.Set<TEntity>();
         }
 
-        public void Adicionar(T entity)
+        public void Adicionar(TEntity entity)
         {
             _dbSet.Add(entity);
             SalvarAlteracao();
         }
 
-        public void Atualizar(T entity)
+        public void Atualizar(TEntity entity)
         {
             _dbSet.Update(entity);
             SalvarAlteracao();
