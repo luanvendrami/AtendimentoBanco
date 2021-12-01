@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Dominio.Interfaces.Repositorio.BaseRepositorio
 {
-    public interface IBaseRepositorio<T> : IDisposable where T : class, new()
+    public interface IBaseRepositorio<TEntity> : IDisposable where TEntity : class, new()
     {
-        void Adicionar(T entity);
-        void Atualizar(T entity);
+        void Adicionar(TEntity entity);
+        void Atualizar(TEntity entity);
         void Remover(int id);
         int SalvarAlteracao();
     }
