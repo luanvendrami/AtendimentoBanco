@@ -1,7 +1,8 @@
 ﻿using CadastroCliente.Service;
-using Dominio.Interfaces.Aplicações;
 using Dominio.Interfaces.Repositorio;
 using Dominio.Interfaces.Repositorio.BaseRepositorio;
+using Dominio.Interfaces.Service;
+using EnderecoCliente.Service;
 using Infra.Data.Contexto;
 using Infra.Data.Repositorio;
 using Infra.Data.Repositorio.BaseRepositorio;
@@ -18,12 +19,14 @@ namespace Infra.CrossCuting.IoC
 
         public static void InjeçaoServices(this IServiceCollection services)
         {
-            services.AddScoped<ICadastroClienteService, CadastroClienteService>();
+            services.AddScoped<ICadastroClienteService, CadastroCliente.Service.CadastroClienteService>();
+            services.AddScoped<IEnderecoClienteService, EnderecoClienteService>();
+
         }
 
         public static void InjeçaoRepositorio(this IServiceCollection services)
         {
-            services.AddScoped<IInformacaoClienteRepositorio, InformacaoClienteRepositorio>();
+            services.AddScoped<ICadastroClienteRepositorio, Data.Repositorio.CadastroClienteRepositorio>();
         }   
     }
 }
