@@ -1,7 +1,10 @@
+using Infra.CrossCuting.IoC;
+using Infra.Data.Contexto;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,8 +29,13 @@ namespace AtendimentoBanco
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.ConexaoBanco();
+            services.InjeçãoServices();
             services.AddControllers();
+
+            services.AddDbContext<Contexto>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("Contexto")));
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AtendimentoBanco", Version = "v1" });
