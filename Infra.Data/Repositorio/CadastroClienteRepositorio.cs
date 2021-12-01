@@ -11,23 +11,23 @@ using System.Threading.Tasks;
 
 namespace Infra.Data.Repositorio
 {
-    public class InformacaoClienteRepositorio : BaseRepositorio<InformacaoCliente>, IInformacaoClienteRepositorio
+    public class CadastroClienteRepositorio : BaseRepositorio<DadosCliente>, ICadastroClienteRepositorio
     {
-        public InformacaoClienteRepositorio(ContextoSQL context) : base(context)
+        public CadastroClienteRepositorio(ContextoSQL context) : base(context)
         {
         }
 
-        public IEnumerable<InformacaoCliente> RetornaClientes()
+        public IEnumerable<DadosCliente> RetornaClientes()
         {
             return _context.InformacaoCliente.AsNoTracking().ToList();
         }
 
-        public IEnumerable<InformacaoCliente> RetornaNomeCliente(string nome)
+        public IEnumerable<DadosCliente> RetornaNomeCliente(string nome)
         {
             return _context.InformacaoCliente.Where(n => n.NomeCompleto.Contains(nome)).ToList();
         }
 
-        public InformacaoCliente RetornaClientId(int id)
+        public DadosCliente RetornaClientId(int id)
         {
             return _context.InformacaoCliente.AsNoTracking().FirstOrDefault(n => n.Id == id);
         }
