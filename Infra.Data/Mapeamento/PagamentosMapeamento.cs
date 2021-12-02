@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Infra.Data.Mapeamento
 {
-    public class PagamentosMapeamento : IEntityTypeConfiguration<Pagamentos>
+    public class PagamentosMapeamento : IEntityTypeConfiguration<PagamentosCliente>
     {
-        public void Configure(EntityTypeBuilder<Pagamentos> builder)
+        public void Configure(EntityTypeBuilder<PagamentosCliente> builder)
         {
             builder.HasKey(p => p.Id);
 
