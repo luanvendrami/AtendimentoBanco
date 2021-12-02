@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Pagamentos.Service
 {
-    public class PagamentosService : IPagamentos
+    public class PagamentosService : IPagamentosService
     {
         private readonly IPagamentosRepositorio _pagamentosRepositorio;
 
@@ -31,6 +31,12 @@ namespace Pagamentos.Service
             {
                 return $"Pagamento não foi cadastrado, verifique as informações!";
             }
+        }
+
+        public PagamentosCliente PagamentosPorId(int id)
+        {
+            var retorno = _pagamentosRepositorio.RetornaPagamentoId(id);
+            return retorno;
         }
     }
 }
