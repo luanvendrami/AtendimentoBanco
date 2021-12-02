@@ -32,5 +32,11 @@ namespace CadastroCliente.Service
                 return $"Cliente não foi cadastrado, verifique as informações!";
             } 
         }
+
+        public DadosCliente RetornaLista(int id)
+        {
+            var consultaRepositorio = _informacaoClienteRepositorio.RetornaClientId(id);
+            return consultaRepositorio;
+        }
     }
 }

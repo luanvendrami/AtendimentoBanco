@@ -1,4 +1,5 @@
-﻿using Dominio.Modelos;
+﻿using Dominio.Entidades;
+using Dominio.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace Dominio.Interfaces.Service
     public interface ICadastroClienteService
     {
         string CadastroCliente(ClienteDto dto);
+        DadosCliente RetornaLista(int id);
     }
 }
