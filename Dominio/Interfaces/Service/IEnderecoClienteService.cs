@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominio.Modelos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace Dominio.Interfaces.Service
 {
     public interface IEnderecoClienteService
     {
-
+        string CadastroEndereco(EnderecoDto dto);
     }
 }
