@@ -12,7 +12,7 @@ namespace Infra.Data.Repositorio
         public PagamentosRepositorio(ContextoSQL context) : base(context)
         {
         }
-        public PagamentosCliente RetornaClientId(int id)
+        public PagamentosCliente RetornaPagamentoId(int id)
         {
             return _context.Pagamentos.AsNoTracking().FirstOrDefault(n => n.Id == id);
         }
