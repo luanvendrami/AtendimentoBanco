@@ -33,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnderecoCliente", "Endereco
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pagamentos", "Pagamentos", "{E3F838AB-BCAE-42DE-A609-AE1ED0491544}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pagamentos", "Pagamentos\Pagamentos.csproj", "{C84BF332-762C-4DE8-A90F-421DDDE683D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pagamentos", "Pagamentos\Pagamentos.csproj", "{C84BF332-762C-4DE8-A90F-421DDDE683D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
