@@ -16,6 +16,21 @@ namespace AtendimentoBanco.Controllers
             _enderecoClienteService = enderecoClienteService;
         }
 
+        [HttpGet("RetornaEnderecoClienteId")]
+        public ActionResult EnderecoId([FromQuery]int id)
+        {
+            try
+            {
+                var retorno = _enderecoClienteService.RetornaPorId(id);
+                return Ok(retorno);
+            }
+            catch (Exception ex)
+            {
+                var error = ex;
+                return BadRequest("Ocorreu um erro ao consultar o endereço, verifique!");
+            }
+        }
+
         [HttpPost]
         public ActionResult CadastroEndereco([FromForm] EnderecoDto dto)
         {

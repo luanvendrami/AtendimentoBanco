@@ -31,7 +31,12 @@ namespace EnderecoCliente.Service
             {
                 return $"Endereço não foi cadastrado, verifique as informações!";
             }
+        }
 
+        public EnderecoDoCliente RetornaPorId(int id)
+        {
+            var retorno = _enderecoClienteRepositorio.RetornaEnderecoId(id);
+            return retorno;
         }
     }
 }
