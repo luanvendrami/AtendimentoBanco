@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31605.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtendimentoBanco", "AtendimentoBanco\AtendimentoBanco.csproj", "{E0210D34-486D-4F2E-ACB6-6620EE71D2F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AtendimentoBanco", "AtendimentoBanco\AtendimentoBanco.csproj", "{E0210D34-486D-4F2E-ACB6-6620EE71D2F5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Apresentação", "0 - Apresentação", "{7FD20342-F730-4964-A703-1C9C060F0F58}"
 EndProject
@@ -13,23 +13,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Dominio", "2 - Dominio"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Infra", "3 - Infra", "{3B3A41F8-ADF4-42A0-BAE0-57BED48486EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadastroCliente", "Aplicacao\CadastroCliente.csproj", "{1BF617B8-A3CE-4CA7-9C24-675DEC522CC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CadastroCliente", "Aplicacao\CadastroCliente.csproj", "{1BF617B8-A3CE-4CA7-9C24-675DEC522CC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{0CED66AE-6458-4E0D-BC96-F4EB45B45CE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dominio", "Dominio\Dominio.csproj", "{0CED66AE-6458-4E0D-BC96-F4EB45B45CE4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{33C5DC37-1F64-470B-8F46-F1D7CFF9DF9C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2- CrossCuting", "4.2- CrossCuting", "{AFF3190D-EAFD-428F-B7BF-FE1EC22E4D91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.Data", "Infra.Data\Infra.Data.csproj", "{85441E3C-E2BE-485A-B207-EFF3E1F610BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.Data", "Infra.Data\Infra.Data.csproj", "{85441E3C-E2BE-485A-B207-EFF3E1F610BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.CrossCuting", "Infra.CrossCuting\Infra.CrossCuting.csproj", "{F43AB7D0-EE43-405A-B7E3-F57E445EB62B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.CrossCuting", "Infra.CrossCuting\Infra.CrossCuting.csproj", "{F43AB7D0-EE43-405A-B7E3-F57E445EB62B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CadastroCliente", "CadastroCliente", "{F1777E98-0859-4567-BE06-32C1011E3001}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EnderecoCliente", "EnderecoCliente", "{9A8581DE-D858-43C8-B12A-9BF2109C3F08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnderecoCliente", "EnderecoCliente\EnderecoCliente.csproj", "{49E0ADD4-1309-40D9-9F20-23B56A80CFB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnderecoCliente", "EnderecoCliente\EnderecoCliente.csproj", "{49E0ADD4-1309-40D9-9F20-23B56A80CFB1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pagamentos", "Pagamentos", "{E3F838AB-BCAE-42DE-A609-AE1ED0491544}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pagamentos", "Pagamentos\Pagamentos.csproj", "{C84BF332-762C-4DE8-A90F-421DDDE683D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +65,10 @@ Global
 		{49E0ADD4-1309-40D9-9F20-23B56A80CFB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49E0ADD4-1309-40D9-9F20-23B56A80CFB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49E0ADD4-1309-40D9-9F20-23B56A80CFB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C84BF332-762C-4DE8-A90F-421DDDE683D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C84BF332-762C-4DE8-A90F-421DDDE683D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C84BF332-762C-4DE8-A90F-421DDDE683D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C84BF332-762C-4DE8-A90F-421DDDE683D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +84,8 @@ Global
 		{F1777E98-0859-4567-BE06-32C1011E3001} = {ADF18D3F-2E06-413C-B2AF-5FE908D12244}
 		{9A8581DE-D858-43C8-B12A-9BF2109C3F08} = {ADF18D3F-2E06-413C-B2AF-5FE908D12244}
 		{49E0ADD4-1309-40D9-9F20-23B56A80CFB1} = {9A8581DE-D858-43C8-B12A-9BF2109C3F08}
+		{E3F838AB-BCAE-42DE-A609-AE1ED0491544} = {ADF18D3F-2E06-413C-B2AF-5FE908D12244}
+		{C84BF332-762C-4DE8-A90F-421DDDE683D4} = {E3F838AB-BCAE-42DE-A609-AE1ED0491544}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1DE90634-77D1-488B-A9C0-26DC39C8FFF2}
