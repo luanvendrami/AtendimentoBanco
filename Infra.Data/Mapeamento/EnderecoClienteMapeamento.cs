@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Infra.Data.Mapeamento
 {
-    public class EnderecoClienteMapeamento : IEntityTypeConfiguration<EnderecoCliente>
+    public class EnderecoClienteMapeamento : IEntityTypeConfiguration<EnderecoDoCliente>
     {
-        public void Configure(EntityTypeBuilder<EnderecoCliente> builder)
+        public void Configure(EntityTypeBuilder<EnderecoDoCliente> builder)
         {
             builder.HasKey(p => p.Id);
 
