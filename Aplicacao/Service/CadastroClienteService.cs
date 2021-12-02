@@ -33,7 +33,7 @@ namespace CadastroCliente.Service
             } 
         }
 
-        public DadosCliente RetornaLista(int id)
+        public DadosCliente RetornaPorId(int id)
         {
             var consultaRepositorio = _informacaoClienteRepositorio.RetornaClientId(id);
             return consultaRepositorio;

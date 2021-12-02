@@ -20,11 +20,11 @@ namespace AtendimentoBanco.Controllers
         }
 
         [HttpGet("RetornaCadastroClienteId")]
-        public ActionResult ListaCadastrosId([FromQuery] int id)
+        public ActionResult CadastrosId([FromQuery] int id)
         {
             try
             {
-                var retorno = _cadastroClienteService.RetornaLista(id);
+                var retorno = _cadastroClienteService.RetornaPorId(id);
                 return Ok(retorno);
             }
             catch (Exception ex)

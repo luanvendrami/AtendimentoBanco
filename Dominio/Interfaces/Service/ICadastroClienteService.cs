@@ -11,6 +11,6 @@ namespace Dominio.Interfaces.Service
     public interface ICadastroClienteService
     {
         string CadastroCliente(ClienteDto dto);
-        DadosCliente RetornaLista(int id);
+        DadosCliente RetornaPorId(int id);
     }
 }
