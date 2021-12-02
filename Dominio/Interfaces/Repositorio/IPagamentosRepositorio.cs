@@ -10,6 +10,6 @@ namespace Dominio.Interfaces.Repositorio
 {
     public interface IPagamentosRepositorio : IBaseRepositorio<PagamentosCliente>
     {
-        PagamentosCliente RetornaClientId(int id);
+        PagamentosCliente RetornaPagamentoId(int id);
     }
 }
