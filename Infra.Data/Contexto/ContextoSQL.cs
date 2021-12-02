@@ -9,6 +9,7 @@ namespace Infra.Data.Contexto
             : base(options)
         {}
         public DbSet<DadosCliente> InformacaoCliente { get; set; }
-        public DbSet<EnderecoCliente> EnderecoCliente { get; set; }
+        public DbSet<EnderecoDoCliente> EnderecoCliente { get; set; }
+        public DbSet<Pagamentos> Pagamentos { get; set; }
     }
 }
