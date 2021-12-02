@@ -46,5 +46,19 @@ namespace AtendimentoBanco.Controllers
                 return BadRequest("As informações NÃO foram salvas!");        
             }
         }
+
+        [HttpPut("AtualizarCadastroCliente")]
+        public ActionResult AtualizarCliente(int id, [FromForm] ClienteDto dto)
+        {
+            try
+            {
+                var retorno = _cadastroClienteService.AtualizarDados(id, dto);
+                return Ok(retorno);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("As informações NÃO foram atualizadas!");
+            }
+        }
     }
 }

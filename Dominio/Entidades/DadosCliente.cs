@@ -14,6 +14,16 @@ namespace Dominio.Entidades
         public string Cpf { get; private set; }
         public string Rg { get; private set; }
         public DateTime DataNascimento { get; private set; }
+
+        public DadosCliente(int id, string nomeCompleto, string cpf, string rg, DateTime dataNascimento)
+        {
+            Id = id;
+            NomeCompleto = nomeCompleto;
+            Cpf = cpf;
+            Rg = rg;
+            DataNascimento = dataNascimento;
+        }
+
         public DadosCliente(string nomeCompleto, string cpf, string rg, DateTime dataNascimento)
         {
             NomeCompleto = nomeCompleto;
@@ -27,6 +37,7 @@ namespace Dominio.Entidades
 
         }
 
+        
         public bool Validacao()
         {
             if (!string.IsNullOrEmpty(NomeCompleto) && !string.IsNullOrEmpty(Cpf) && !string.IsNullOrEmpty(Rg) && !string.IsNullOrEmpty(DataNascimento.ToString()))

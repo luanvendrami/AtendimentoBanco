@@ -38,5 +38,17 @@ namespace CadastroCliente.Service
             var consultaRepositorio = _informacaoClienteRepositorio.RetornaClientId(id);
             return consultaRepositorio;
         }
+
+        public string AtualizarDados(int id, ClienteDto dto)
+        {
+            var consultaRepositorio = _informacaoClienteRepositorio.RetornaClientId(id);
+            if (consultaRepositorio.Id == id)
+            {    
+                var dadosCliente = new DadosCliente(consultaRepositorio.Id, dto.NomeCompleto, dto.Cpf, dto.Rg, dto.DataNascimento);
+                consultaRepositorio = dadosCliente;
+                _informacaoClienteRepositorio.Atualizar(consultaRepositorio);
+            }
+            return $"Alterado com sucesso!";
+        }
     }
 }
