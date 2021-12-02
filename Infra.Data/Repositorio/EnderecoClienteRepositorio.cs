@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace Infra.Data.Repositorio
 {
-    public class EnderecoClienteRepositorio : BaseRepositorio<EnderecoCliente>, IEnderecoClienteRepositorio
+    public class EnderecoClienteRepositorio : BaseRepositorio<EnderecoDoCliente>, IEnderecoClienteRepositorio
     {
         public EnderecoClienteRepositorio(ContextoSQL context) : base(context)
         {
         }
 
-        public EnderecoCliente RetornaEnderecoId(int id)
+        public EnderecoDoCliente RetornaEnderecoId(int id)
         {
             return _context.EnderecoCliente.AsNoTracking().FirstOrDefault(n => n.Id == id);
         }

@@ -34,6 +34,7 @@ namespace Infra.Data.Repositorio.BaseRepositorio
 
         public void Dispose()
         {
+            
             _context?.Dispose();
         }
 

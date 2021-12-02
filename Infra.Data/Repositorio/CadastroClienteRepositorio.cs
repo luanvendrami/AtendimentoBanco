@@ -17,16 +17,6 @@ namespace Infra.Data.Repositorio
         {
         }
 
-        public IEnumerable<DadosCliente> RetornaClientes()
-        {
-            return _context.InformacaoCliente.AsNoTracking().ToList();
-        }
-
-        public IEnumerable<DadosCliente> RetornaNomeCliente(string nome)
-        {
-            return _context.InformacaoCliente.Where(n => n.NomeCompleto.Contains(nome)).ToList();
-        }
-
         public DadosCliente RetornaClientId(int id)
         {
             return _context.InformacaoCliente.AsNoTracking().FirstOrDefault(n => n.Id == id);

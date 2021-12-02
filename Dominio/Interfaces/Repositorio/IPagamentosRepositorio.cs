@@ -1,5 +1,4 @@
 ﻿using Dominio.Entidades;
-using Dominio.Interfaces.Repositorio.BaseRepositorio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Dominio.Interfaces.Repositorio
 {
-    public interface ICadastroClienteRepositorio : IBaseRepositorio<DadosCliente>
+    public interface IPagamentosRepositorio
     {
-        DadosCliente RetornaClientId(int id);
+        Pagamentos RetornaClientId(int id);
     }
 }
