@@ -16,7 +16,7 @@ namespace AtendimentoBanco.Controllers
             _enderecoClienteService = enderecoClienteService;
         }
 
-        [HttpGet("RetornaEnderecoClienteId")]
+        [HttpGet("RetornaEnderecoId")]
         public ActionResult EnderecoId([FromQuery]int id)
         {
             try
@@ -26,12 +26,11 @@ namespace AtendimentoBanco.Controllers
             }
             catch (Exception ex)
             {
-                var error = ex;
                 return BadRequest("Ocorreu um erro ao consultar o endereço, verifique!");
             }
         }
 
-        [HttpPost]
+        [HttpPost("CadastroEndereco")]
         public ActionResult CadastroEndereco([FromForm] EnderecoDto dto)
         {
             try
@@ -41,7 +40,6 @@ namespace AtendimentoBanco.Controllers
             }
             catch (Exception ex)
             {
-                var error = ex;
                 return BadRequest("As informações NÃO foram salvas!");
             }
         }

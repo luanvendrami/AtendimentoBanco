@@ -29,7 +29,6 @@ namespace AtendimentoBanco.Controllers
             }
             catch (Exception ex)
             {
-                var error = ex;
                 return BadRequest("Ocorreu um erro ao consultar o id, verifique!");
             }
         }
@@ -44,7 +43,6 @@ namespace AtendimentoBanco.Controllers
             }
             catch(Exception ex)
             {
-                var error = ex;
                 return BadRequest("As informações NÃO foram salvas!");        
             }
         }

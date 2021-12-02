@@ -9,15 +9,29 @@ namespace AtendimentoBanco.Controllers
     [ApiController]
     public class PagamentosController : ControllerBase
     {
-        private readonly IPagamentos _pagamentos;
+        private readonly IPagamentosService _pagamentos;
 
-        public PagamentosController(IPagamentos pagamentos)
+        public PagamentosController(IPagamentosService pagamentos)
         {
             _pagamentos = pagamentos;
         }
 
-        [HttpPost]
-        public ActionResult CadastroEndereco([FromForm] PagamentoDto dto)
+        [HttpGet("RetornaPagamentoId")]
+        public ActionResult PagamentoId([FromQuery]int id)
+        {
+            try
+            {
+                var retorno = _pagamentos.PagamentosPorId(id);
+                return Ok(retorno);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Ocorreu um erro ao consultar o pagamento, verifique!");
+            }
+        }
+
+        [HttpPost("CadastroPagamento")]
+        public ActionResult CadastroPagamento([FromForm] PagamentoDto dto)
         {
             try
             {
@@ -26,7 +40,6 @@ namespace AtendimentoBanco.Controllers
             }
             catch (Exception ex)
             {
-                var error = ex;
                 return BadRequest("As informações NÃO foram salvas!");
             }
         }
