@@ -38,5 +38,17 @@ namespace Pagamentos.Service
             var retorno = _pagamentosRepositorio.RetornaPagamentoId(id);
             return retorno;
         }
+
+        public string AtualizarPagamento(int id, PagamentoDto dto)
+        {
+            var consultaRepositorio = _pagamentosRepositorio.RetornaPagamentoId(id);
+            if (consultaRepositorio.Id == id)
+            {
+                var pagamentoCliente = new PagamentosCliente(consultaRepositorio.Id, dto.FormaPagamento, dto.ConfirmadoPagamento, dto.ValorPagamentoAgendado, dto.DataPagamentoAgendado, dto.ValorPagamento, dto.DataPagamento, dto.ValorMulta, dto.ValorDesconto);
+                consultaRepositorio = pagamentoCliente;
+                _pagamentosRepositorio.Atualizar(consultaRepositorio);
+            }
+            return $"Alterado com sucesso!";
+        }
     }
 }
