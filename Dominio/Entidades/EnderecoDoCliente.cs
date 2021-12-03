@@ -15,6 +15,18 @@ namespace Dominio.Entidades
         public string Rua { get; private set; }
         public string NumeroResidencia { get; private set; }
         public string Complemento { get; private set; }
+
+        public EnderecoDoCliente(int id, string uf, string cidade, string bairro, string rua, string numeroResidencia, string complemento)
+        {
+            Id = id;
+            Uf = uf;
+            Cidade = cidade;
+            Bairro = bairro;
+            Rua = rua;
+            NumeroResidencia = numeroResidencia;
+            Complemento = complemento;
+        }
+
         public EnderecoDoCliente(string uf, string cidade, string bairro, string rua, string numeroResidencia, string complemento)
         {
             Uf = uf;
@@ -29,6 +41,8 @@ namespace Dominio.Entidades
         {
 
         }
+
+        
 
         public bool Validacao()
         {
