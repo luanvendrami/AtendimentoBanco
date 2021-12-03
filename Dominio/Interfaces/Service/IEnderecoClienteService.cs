@@ -12,5 +12,6 @@ namespace Dominio.Interfaces.Service
     {
         string CadastroEndereco(EnderecoDto dto);
         EnderecoDoCliente RetornaPorId(int id);
+        string AtualizarEndereco(int id, EnderecoDto dto);
     }
 }
