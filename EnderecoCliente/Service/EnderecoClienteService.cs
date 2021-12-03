@@ -38,5 +38,17 @@ namespace EnderecoCliente.Service
             var retorno = _enderecoClienteRepositorio.RetornaEnderecoId(id);
             return retorno;
         }
+
+        public string AtualizarEndereco(int id, EnderecoDto dto)
+        {
+            var consultaRepositorio = _enderecoClienteRepositorio.RetornaEnderecoId(id);
+            if (consultaRepositorio.Id == id)
+            {
+                var endertecoCliente = new EnderecoDoCliente(consultaRepositorio.Id, dto.Uf, dto.Cidade, dto.Bairro, dto.Rua, dto.NumeroResidencia, dto.Complemento);
+                consultaRepositorio = endertecoCliente;
+                _enderecoClienteRepositorio.Atualizar(consultaRepositorio);
+            }
+            return $"Alterado com sucesso!";
+        }
     }
 }
