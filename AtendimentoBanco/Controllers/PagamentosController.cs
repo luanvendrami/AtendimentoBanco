@@ -43,5 +43,19 @@ namespace AtendimentoBanco.Controllers
                 return BadRequest("As informações NÃO foram salvas!");
             }
         }
+
+        [HttpPut("AtualizarPagamentoCliente")]
+        public ActionResult AtualizarPagamento(int id, [FromForm] PagamentoDto dto)
+        {
+            try
+            {
+                var retorno = _pagamentos.AtualizarPagamento(id, dto);
+                return Ok(retorno);
+            }
+            catch
+            {
+                return BadRequest("As informações NÃO foram atualizadas!");
+            }
+        }
     }
 }
