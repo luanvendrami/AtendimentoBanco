@@ -17,6 +17,18 @@ namespace Dominio.Entidades
         public DateTime DataPagamento { get; set; }
         public decimal ValorMulta { get; set; }
         public decimal ValorDesconto { get; set; }
+        public PagamentosCliente(int id, byte formaPagamento, bool confirmadoPagamento, decimal valorPagamentoAgendado, DateTime dataPagamentoAgendado, decimal valorPagamento, DateTime dataPagamento, decimal valorMulta, decimal valorDesconto)
+        {
+            Id = id;
+            FormaPagamento = formaPagamento;
+            ConfirmadoPagamento = confirmadoPagamento;
+            ValorPagamentoAgendado = valorPagamentoAgendado;
+            DataPagamentoAgendado = dataPagamentoAgendado;
+            ValorPagamento = valorPagamento;
+            DataPagamento = dataPagamento;
+            ValorMulta = valorMulta;
+            ValorDesconto = valorDesconto;
+        }
 
         public PagamentosCliente(byte formaPagamento, bool confirmadoPagamento, decimal valorPagamentoAgendado, DateTime dataPagamentoAgendado, decimal valorPagamento, DateTime dataPagamento, decimal valorMulta, decimal valorDesconto)
         {
@@ -34,6 +46,8 @@ namespace Dominio.Entidades
         {
 
         }
+
+       
 
         public bool Validacao()
         {
