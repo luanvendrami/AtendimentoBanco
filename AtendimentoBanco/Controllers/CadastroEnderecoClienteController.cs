@@ -24,7 +24,7 @@ namespace AtendimentoBanco.Controllers
                 var retorno = _enderecoClienteService.RetornaPorId(id);
                 return Ok(retorno);
             }
-            catch (Exception ex)
+            catch
             {
                 return BadRequest("Ocorreu um erro ao consultar o endereço, verifique!");
             }
@@ -38,9 +38,23 @@ namespace AtendimentoBanco.Controllers
                 var retorno = _enderecoClienteService.CadastroEndereco(dto);
                 return Ok(retorno);
             }
-            catch (Exception ex)
+            catch
             {
                 return BadRequest("As informações NÃO foram salvas!");
+            }
+        }
+
+        [HttpPut("AtualizarEnderecoCliente")]
+        public ActionResult AtualizarEndereco(int id, [FromForm] EnderecoDto dto)
+        {
+            try
+            {
+                var retorno = _enderecoClienteService.AtualizarEndereco(id, dto);
+                return Ok(retorno);
+            }
+            catch 
+            {
+                return BadRequest("As informações NÃO foram atualizadas!");
             }
         }
     }
