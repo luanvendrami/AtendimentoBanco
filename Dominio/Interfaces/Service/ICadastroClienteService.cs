@@ -13,5 +13,6 @@ namespace Dominio.Interfaces.Service
         string CadastroCliente(ClienteDto dto);
         DadosCliente RetornaPorId(int id);
         string AtualizarDados(int id, ClienteDto dto);
+        string DeletarDados(int id);
     }
 }

@@ -13,5 +13,6 @@ namespace Dominio.Interfaces.Service
         string CadastroPagamentos(PagamentoDto dto);
         PagamentosCliente PagamentosPorId(int id);
         string AtualizarPagamento(int id, PagamentoDto dto);
+        string DeletarPagamento(int id);
     }
 }
