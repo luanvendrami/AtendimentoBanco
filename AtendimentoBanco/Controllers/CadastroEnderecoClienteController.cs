@@ -57,5 +57,19 @@ namespace AtendimentoBanco.Controllers
                 return BadRequest("As informações NÃO foram atualizadas!");
             }
         }
+
+        [HttpDelete("DeletarEndereco")]
+        public ActionResult DeletarEndereco(int id)
+        {
+            try
+            {
+                var retorno = _enderecoClienteService.DeletarEndereco(id);
+                return Ok(retorno);
+            }
+            catch
+            {
+                return BadRequest("As informações NÃO foram deletadas!");
+            }
+        }
     }
 }

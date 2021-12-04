@@ -27,7 +27,7 @@ namespace AtendimentoBanco.Controllers
                 var retorno = _cadastroClienteService.RetornaPorId(id);
                 return Ok(retorno);
             }
-            catch (Exception ex)
+            catch 
             {
                 return BadRequest("Ocorreu um erro ao consultar o id, verifique!");
             }
@@ -41,7 +41,7 @@ namespace AtendimentoBanco.Controllers
                var retorno = _cadastroClienteService.CadastroCliente(dto);
                 return Ok(retorno);
             }
-            catch(Exception ex)
+            catch
             {
                 return BadRequest("As informações NÃO foram salvas!");        
             }
@@ -55,9 +55,23 @@ namespace AtendimentoBanco.Controllers
                 var retorno = _cadastroClienteService.AtualizarDados(id, dto);
                 return Ok(retorno);
             }
-            catch (Exception ex)
+            catch
             {
                 return BadRequest("As informações NÃO foram atualizadas!");
+            }
+        }
+
+        [HttpDelete("DeletarDados")]
+        public ActionResult DeletarDados(int id)
+        {
+            try
+            {
+                var retorno = _cadastroClienteService.DeletarDados(id);
+                return Ok(retorno);
+            }
+            catch
+            {
+                return BadRequest("As informações NÃO foram deletadas!");
             }
         }
     }

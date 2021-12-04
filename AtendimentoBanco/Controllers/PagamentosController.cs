@@ -57,5 +57,19 @@ namespace AtendimentoBanco.Controllers
                 return BadRequest("As informações NÃO foram atualizadas!");
             }
         }
+
+        [HttpDelete("DeletarPagamento")]
+        public ActionResult DeletarDados(int id)
+        {
+            try
+            {
+                var retorno = _pagamentos.DeletarPagamento(id);
+                return Ok(retorno);
+            }
+            catch
+            {
+                return BadRequest("As informações NÃO foram deletadas!");
+            }
+        }
     }
 }
