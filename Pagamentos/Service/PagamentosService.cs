@@ -50,5 +50,12 @@ namespace Pagamentos.Service
             }
             return $"Alterado com sucesso!";
         }
+
+        public string DeletarPagamento(int id)
+        {
+            var consultaRepositorio = _pagamentosRepositorio.RetornaPagamentoId(id);
+            _pagamentosRepositorio.Remover(consultaRepositorio.Id);
+            return $"Deletado com sucesso!";
+        }
     }
 }

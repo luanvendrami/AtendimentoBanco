@@ -50,5 +50,12 @@ namespace EnderecoCliente.Service
             }
             return $"Alterado com sucesso!";
         }
+
+        public string DeletarEndereco(int id)
+        {
+            var consultaRepositorio = _enderecoClienteRepositorio.RetornaEnderecoId(id);
+            _enderecoClienteRepositorio.Remover(consultaRepositorio.Id);
+            return $"Deletado com sucesso!";
+        }
     }
 }

@@ -50,5 +50,12 @@ namespace CadastroCliente.Service
             }
             return $"Alterado com sucesso!";
         }
+
+        public string DeletarDados(int id)
+        {
+            var consultaRepositorio = _informacaoClienteRepositorio.RetornaClientId(id);
+            _informacaoClienteRepositorio.Remover(consultaRepositorio.Id);
+            return $"Deletado com sucesso!";
+        }
     }
 }
