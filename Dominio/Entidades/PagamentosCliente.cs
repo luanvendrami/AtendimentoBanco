@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace Dominio.Entidades
     public class PagamentosCliente
     {
         public int Id { get; set; }
-        public byte FormaPagamento { get; set; }
+        public int FormaPagamento { get; set; }
         public bool ConfirmadoPagamento { get; set; }
         public decimal ValorPagamentoAgendado { get; set; }
         public DateTime DataPagamentoAgendado { get; set; }
@@ -17,9 +18,14 @@ namespace Dominio.Entidades
         public DateTime DataPagamento { get; set; }
         public decimal ValorMulta { get; set; }
         public decimal ValorDesconto { get; set; }
-        public PagamentosCliente(int id, byte formaPagamento, bool confirmadoPagamento, decimal valorPagamentoAgendado, DateTime dataPagamentoAgendado, decimal valorPagamento, DateTime dataPagamento, decimal valorMulta, decimal valorDesconto)
+        public int IdCliente { get; set; }
+
+        [ForeignKey("IdCliente")]
+        public virtual DadosCliente PagamentoNavegation { get; set; }
+
+        public PagamentosCliente(DadosCliente navegation, int formaPagamento, bool confirmadoPagamento, decimal valorPagamentoAgendado, DateTime dataPagamentoAgendado, decimal valorPagamento, DateTime dataPagamento, decimal valorMulta, decimal valorDesconto)
         {
-            Id = id;
+            PagamentoNavegation = navegation;
             FormaPagamento = formaPagamento;
             ConfirmadoPagamento = confirmadoPagamento;
             ValorPagamentoAgendado = valorPagamentoAgendado;
@@ -30,7 +36,20 @@ namespace Dominio.Entidades
             ValorDesconto = valorDesconto;
         }
 
-        public PagamentosCliente(byte formaPagamento, bool confirmadoPagamento, decimal valorPagamentoAgendado, DateTime dataPagamentoAgendado, decimal valorPagamento, DateTime dataPagamento, decimal valorMulta, decimal valorDesconto)
+        public PagamentosCliente(int idCliente, int formaPagamento, bool confirmadoPagamento, decimal valorPagamentoAgendado, DateTime dataPagamentoAgendado, decimal valorPagamento, DateTime dataPagamento, decimal valorMulta, decimal valorDesconto)
+        {
+            IdCliente = idCliente;
+            FormaPagamento = formaPagamento;
+            ConfirmadoPagamento = confirmadoPagamento;
+            ValorPagamentoAgendado = valorPagamentoAgendado;
+            DataPagamentoAgendado = dataPagamentoAgendado;
+            ValorPagamento = valorPagamento;
+            DataPagamento = dataPagamento;
+            ValorMulta = valorMulta;
+            ValorDesconto = valorDesconto;
+        }
+
+        public PagamentosCliente(int formaPagamento, bool confirmadoPagamento, decimal valorPagamentoAgendado, DateTime dataPagamentoAgendado, decimal valorPagamento, DateTime dataPagamento, decimal valorMulta, decimal valorDesconto)
         {
             FormaPagamento = formaPagamento;
             ConfirmadoPagamento = confirmadoPagamento;
