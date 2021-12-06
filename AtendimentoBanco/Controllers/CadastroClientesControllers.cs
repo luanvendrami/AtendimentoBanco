@@ -41,8 +41,9 @@ namespace AtendimentoBanco.Controllers
                var retorno = _cadastroClienteService.CadastroCliente(dto);
                 return Ok(retorno);
             }
-            catch
+            catch(Exception ex)
             {
+                var error = ex;
                 return BadRequest("As informações NÃO foram salvas!");        
             }
         }
@@ -55,8 +56,9 @@ namespace AtendimentoBanco.Controllers
                 var retorno = _cadastroClienteService.AtualizarDados(id, dto);
                 return Ok(retorno);
             }
-            catch
+            catch(Exception ex)
             {
+                var error = ex;
                 return BadRequest("As informações NÃO foram atualizadas!");
             }
         }
