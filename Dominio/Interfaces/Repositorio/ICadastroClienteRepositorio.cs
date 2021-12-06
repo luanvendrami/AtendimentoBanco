@@ -11,5 +11,6 @@ namespace Dominio.Interfaces.Repositorio
     public interface ICadastroClienteRepositorio : IBaseRepositorio<DadosCliente>
     {
         DadosCliente RetornaClientId(int id);
+        DadosCliente ConsultaId(int id);
     }
 }
