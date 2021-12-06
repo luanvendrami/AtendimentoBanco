@@ -8,8 +8,9 @@ namespace Infra.Data.Contexto
         public ContextoSQL(DbContextOptions<ContextoSQL> options)
             : base(options)
         {}
-        public DbSet<DadosCliente> InformacaoCliente { get; set; }
-        public DbSet<EnderecoDoCliente> EnderecoCliente { get; set; }
-        public DbSet<PagamentosCliente> Pagamentos { get; set; }
+
+        public DbSet<DadosCliente> Cliente { get; set; }
+        public DbSet<EnderecoDoCliente> Endereco { get; set; }
+        public DbSet<PagamentosCliente> Pagamento { get; set; }
     }
 }

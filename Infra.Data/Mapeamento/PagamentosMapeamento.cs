@@ -15,31 +15,45 @@ namespace Infra.Data.Mapeamento
         {
             builder.HasKey(p => p.Id);
 
-            builder.ToTable("Pagamentos");
+            builder.ToTable("Pagamento");
 
             builder.Property(p => p.FormaPagamento)
-                .HasColumnType("tinyint");
+                .HasColumnType("int")
+                .IsRequired();
 
             builder.Property(p => p.ConfirmadoPagamento)
-                .HasColumnType("bit");
+                .HasColumnType("bit")
+                .IsRequired();
 
             builder.Property(p => p.ValorPagamentoAgendado)
-                .HasColumnType("decimal");
+                .HasColumnType("decimal")
+                .IsRequired();
 
             builder.Property(p => p.DataPagamentoAgendado)
-                .HasColumnType("datetime");
+                .HasColumnType("datetime")
+                .IsRequired();
 
             builder.Property(p => p.ValorPagamento)
-               .HasColumnType("decimal");
+               .HasColumnType("decimal")
+               .IsRequired();
 
             builder.Property(p => p.DataPagamento)
-               .HasColumnType("datetime");
+               .HasColumnType("datetime")
+               .IsRequired();
 
             builder.Property(p => p.ValorMulta)
-               .HasColumnType("decimal");
+               .HasColumnType("decimal")
+               .IsRequired();
 
             builder.Property(p => p.ValorDesconto)
-               .HasColumnType("decimal");
+               .HasColumnType("decimal")
+               .IsRequired();
+
+            builder.Property(p => p.IdCliente)
+               .HasColumnType("int")
+               .IsRequired();
+
+            builder.HasOne(x => x.PagamentoNavegation).WithMany().HasForeignKey(x => x.IdCliente);
         }
     }
 }

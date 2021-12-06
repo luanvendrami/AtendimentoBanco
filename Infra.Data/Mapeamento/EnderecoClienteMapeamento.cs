@@ -15,25 +15,38 @@ namespace Infra.Data.Mapeamento
         {
             builder.HasKey(p => p.Id);
 
-            builder.ToTable("EnderecoCliente");
+            builder.ToTable("Endereco");
 
             builder.Property(p => p.Uf)
-                .HasColumnType("varchar(2)");
+                .HasColumnType("varchar(2)")
+                .IsRequired();
 
             builder.Property(p => p.Cidade)
-                .HasColumnType("varchar(50)");
+                .HasColumnType("varchar(50)")
+                .IsRequired();
 
             builder.Property(p => p.Bairro)
-                .HasColumnType("varchar(50)");
+                .HasColumnType("varchar(50)")
+                .IsRequired();
 
             builder.Property(p => p.Rua)
-                .HasColumnType("varchar(100)");
+                .HasColumnType("varchar(100)")
+                .IsRequired();
 
             builder.Property(p => p.NumeroResidencia)
-                .HasColumnType("varchar(10)");
+                .HasColumnType("varchar(10)")
+                .IsRequired();
 
             builder.Property(p => p.Complemento)
-                .HasColumnType("varchar(50)");
+                .HasColumnType("varchar(50)")
+                .IsRequired();
+
+            builder.Property(p => p.IdCliente)
+                .HasColumnType("int")
+                .IsRequired();
+
+            builder.HasOne(x => x.EnderecoNavegation).WithOne().HasForeignKey<EnderecoDoCliente>(x => x.IdCliente);
+               
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Infra.Data.Repositorio
         }
         public PagamentosCliente RetornaPagamentoId(int id)
         {
-            return _context.Pagamentos.AsNoTracking().FirstOrDefault(n => n.Id == id);
+            return _context.Pagamento.AsNoTracking().FirstOrDefault(n => n.Id == id);
         }
     }
 }

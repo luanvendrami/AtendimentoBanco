@@ -19,7 +19,7 @@ namespace Infra.Data.Repositorio
 
         public EnderecoDoCliente RetornaEnderecoId(int id)
         {
-            return _context.EnderecoCliente.AsNoTracking().FirstOrDefault(n => n.Id == id);
+            return _context.Endereco.AsNoTracking().FirstOrDefault(n => n.Id == id);
         }
 
     }

@@ -19,7 +19,14 @@ namespace Infra.Data.Repositorio
 
         public DadosCliente RetornaClientId(int id)
         {
-            return _context.InformacaoCliente.AsNoTracking().FirstOrDefault(n => n.Id == id);
+            return _context.Cliente.AsNoTracking()
+                .Include(x => x.Pagamentos)
+                .Include(x => x.Endereco)
+                .FirstOrDefault(n => n.Id == id);
+        }
+        public DadosCliente ConsultaId(int id)
+        {
+            return _context.Cliente.AsNoTracking().FirstOrDefault(n => n.Id == id);
         }
     }
 }

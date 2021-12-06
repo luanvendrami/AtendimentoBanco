@@ -7,9 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Aplicacao\CadastroCliente.csproj" />
     <ProjectReference Include="..\Dominio\Dominio.csproj" />
-    <ProjectReference Include="..\EnderecoCliente\EnderecoCliente.csproj" />
     <ProjectReference Include="..\Infra.Data\Infra.Data.csproj" />
-    <ProjectReference Include="..\Pagamentos\Pagamentos.csproj" />
   </ItemGroup>
 
   <ItemGroup>
