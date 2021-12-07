@@ -14,5 +14,6 @@ namespace Dominio.Interfaces.Service
         Cliente RetornaPorId(int id);
         string AtualizarDados(int id, BancoDto dto);
         string DeletarDados(int id);
+        List<Cliente> RetornaTodosClientes();
     }
 }
