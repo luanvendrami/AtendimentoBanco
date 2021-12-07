@@ -20,7 +20,7 @@ namespace CadastroCliente.Service
         }
 
         //Metodo para cadastro de clientes.
-        public string CadastroCliente(BancoDto dto)
+        public string CadastroCliente(DadosDto dto)
         {
             var entidadeCliente = new Cliente(dto.NomeCompleto, dto.Cpf, dto.Rg, dto.DataNascimento);
             var entidadeEndereco = new Endereco(entidadeCliente, dto.Uf, dto.Cidade, dto.Bairro, dto.Rua, dto.NumeroResidencia, dto.Complemento);
@@ -53,7 +53,7 @@ namespace CadastroCliente.Service
         }
 
         //Metodo que atualiza os dados com o Id fornecido.
-        public string AtualizarDados(int id, BancoDto dto)
+        public string AtualizarDados(int id, DadosDto dto)
         {
             var consultaRepositorio = _clienteRepositorio.RetornaClientId(id);
             if (consultaRepositorio.Id == id)
