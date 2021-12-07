@@ -24,29 +24,17 @@ namespace Dominio.Entidades
         public virtual Endereco? Endereco { get; set; }
 #nullable disable
 
-        public Cliente()
-        {
- 
-        }
-
-        public Cliente(string nomeCompleto, string cpf, string rg, DateTime dataNascimento, Pagamento pagamentos, Endereco endereco)
-        {
-            NomeCompleto = nomeCompleto;
-            Cpf = cpf;
-            Rg = rg;
-            DataNascimento = dataNascimento;
-            Pagamentos = pagamentos;
-            Endereco = endereco;
-        }
-
+        //Construtor usada para o metodo de cadastro de clientes.
         public Cliente(string nomeCompleto, string cpf, string rg, DateTime dataNascimento)
         {
             NomeCompleto = nomeCompleto;
             Cpf = cpf;
             Rg = rg;
             DataNascimento = dataNascimento;
+            Validacao();
         }
 
+        //Construtor usada para o metodo atualização de cadastro para clientes.
         public Cliente(int id, string nomeCompleto, string cpf, string rg, DateTime dataNascimento)
         {
             Id = id;
@@ -54,6 +42,12 @@ namespace Dominio.Entidades
             Cpf = cpf;
             Rg = rg;
             DataNascimento = dataNascimento;
+            Validacao();
+        }
+
+        public Cliente()
+        {
+
         }
 
         public bool Validacao()

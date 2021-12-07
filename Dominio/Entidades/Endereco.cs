@@ -22,6 +22,7 @@ namespace Dominio.Entidades
         [ForeignKey("IdCliente")]
         public Cliente EnderecoNavegation { get; set; }
 
+        //Construtor usada para o metodo de cadastro de clientes.
         public Endereco(Cliente navegation, string uf, string cidade, string bairro, string rua, string numeroResidencia, string complemento)
         {
             EnderecoNavegation = navegation;
@@ -31,8 +32,10 @@ namespace Dominio.Entidades
             Rua = rua;
             NumeroResidencia = numeroResidencia;
             Complemento = complemento;
+            Validacao();
         }
 
+        //Construtor usada para o metodo atualização de cadastro para clientes.
         public Endereco(int idCliente, string uf, string cidade, string bairro, string rua, string numeroResidencia, string complemento)
         {
             IdCliente = idCliente;
@@ -42,21 +45,12 @@ namespace Dominio.Entidades
             Rua = rua;
             NumeroResidencia = numeroResidencia;
             Complemento = complemento;
+            Validacao();
         }
 
         public Endereco()
         {
 
-        }
-
-        public Endereco(string uf, string cidade, string bairro, string rua, string numeroResidencia, string complemento)
-        {
-            Uf = uf;
-            Cidade = cidade;
-            Bairro = bairro;
-            Rua = rua;
-            NumeroResidencia = numeroResidencia;
-            Complemento = complemento;
         }
 
         public bool Validacao()
