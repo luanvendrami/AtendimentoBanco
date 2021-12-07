@@ -19,6 +19,20 @@ namespace AtendimentoBanco.Controllers
             _cadastroClienteService = cadastroClienteService;
         }
 
+        [HttpGet("RetornaTodosClientes")]
+        public ActionResult RetornaClientes()
+        {
+            try
+            {
+                var retorno = _cadastroClienteService.RetornaTodosClientes();
+                return Ok(retorno);
+            }
+            catch
+            {
+                return BadRequest("Ocorreu um erro ao consultar a lista de clientes!");
+            }
+        }
+
         [HttpGet("RetornaClienteId")]
         public ActionResult CadastrosId([FromQuery] int id)
         {
