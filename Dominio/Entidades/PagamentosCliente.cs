@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominio.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -23,10 +24,10 @@ namespace Dominio.Entidades
         [ForeignKey("IdCliente")]
         public virtual DadosCliente PagamentoNavegation { get; set; }
 
-        public PagamentosCliente(DadosCliente navegation, int formaPagamento, bool confirmadoPagamento, decimal valorPagamentoAgendado, DateTime dataPagamentoAgendado, decimal valorPagamento, DateTime dataPagamento, decimal valorMulta, decimal valorDesconto)
+        public PagamentosCliente(DadosCliente navegation, TipoPagamento formaPagamento, bool confirmadoPagamento, decimal valorPagamentoAgendado, DateTime dataPagamentoAgendado, decimal valorPagamento, DateTime dataPagamento, decimal valorMulta, decimal valorDesconto)
         {
             PagamentoNavegation = navegation;
-            FormaPagamento = formaPagamento;
+            FormaPagamento = (int)formaPagamento;
             ConfirmadoPagamento = confirmadoPagamento;
             ValorPagamentoAgendado = valorPagamentoAgendado;
             DataPagamentoAgendado = dataPagamentoAgendado;
@@ -36,10 +37,10 @@ namespace Dominio.Entidades
             ValorDesconto = valorDesconto;
         }
 
-        public PagamentosCliente(int idCliente, int formaPagamento, bool confirmadoPagamento, decimal valorPagamentoAgendado, DateTime dataPagamentoAgendado, decimal valorPagamento, DateTime dataPagamento, decimal valorMulta, decimal valorDesconto)
+        public PagamentosCliente(int idCliente, TipoPagamento formaPagamento, bool confirmadoPagamento, decimal valorPagamentoAgendado, DateTime dataPagamentoAgendado, decimal valorPagamento, DateTime dataPagamento, decimal valorMulta, decimal valorDesconto)
         {
             IdCliente = idCliente;
-            FormaPagamento = formaPagamento;
+            FormaPagamento = (int)formaPagamento;
             ConfirmadoPagamento = confirmadoPagamento;
             ValorPagamentoAgendado = valorPagamentoAgendado;
             DataPagamentoAgendado = dataPagamentoAgendado;

@@ -1,7 +1,12 @@
-﻿using System;
+﻿using Dominio.Enums;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Dominio.Modelos
@@ -20,7 +25,7 @@ namespace Dominio.Modelos
         public string NumeroResidencia { get; set; }
         public string Complemento { get; set; }
 
-        public int FormaPagamento { get; set; }
+        public TipoPagamento FormaPagamento { get; set; }
         public bool ConfirmadoPagamento { get; set; }
         public decimal ValorPagamentoAgendado { get; set; }
         public DateTime DataPagamentoAgendado { get; set; }
