@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Dominio.Interfaces.Repositorio
 {
-    public interface IPagamentosRepositorio : IBaseRepositorio<PagamentosCliente>
+    public interface IEnderecoRepositorio : IBaseRepositorio<Endereco>
     {
-        PagamentosCliente RetornaPagamentoId(int id);
+        Endereco RetornaEnderecoId(int id);
     }
 }

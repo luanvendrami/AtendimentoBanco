@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Dominio.Entidades
 {
-    public class PagamentosCliente
+    public class Pagamento
     {
         public int Id { get; set; }
         public int FormaPagamento { get; set; }
@@ -22,9 +22,10 @@ namespace Dominio.Entidades
         public int IdCliente { get; set; }
 
         [ForeignKey("IdCliente")]
-        public virtual DadosCliente PagamentoNavegation { get; set; }
+        public virtual Cliente PagamentoNavegation { get; set; }
 
-        public PagamentosCliente(DadosCliente navegation, TipoPagamento formaPagamento, bool confirmadoPagamento, decimal valorPagamentoAgendado, DateTime dataPagamentoAgendado, decimal valorPagamento, DateTime dataPagamento, decimal valorMulta, decimal valorDesconto)
+        //Construtor usada para o metodo de cadastro de clientes.
+        public Pagamento(Cliente navegation, TipoPagamento formaPagamento, bool confirmadoPagamento, decimal valorPagamentoAgendado, DateTime dataPagamentoAgendado, decimal valorPagamento, DateTime dataPagamento, decimal valorMulta, decimal valorDesconto)
         {
             PagamentoNavegation = navegation;
             FormaPagamento = (int)formaPagamento;
@@ -35,9 +36,11 @@ namespace Dominio.Entidades
             DataPagamento = dataPagamento;
             ValorMulta = valorMulta;
             ValorDesconto = valorDesconto;
+            Validacao();
         }
 
-        public PagamentosCliente(int idCliente, TipoPagamento formaPagamento, bool confirmadoPagamento, decimal valorPagamentoAgendado, DateTime dataPagamentoAgendado, decimal valorPagamento, DateTime dataPagamento, decimal valorMulta, decimal valorDesconto)
+        //Construtor usada para o metodo atualização de cadastro para clientes.
+        public Pagamento(int idCliente, TipoPagamento formaPagamento, bool confirmadoPagamento, decimal valorPagamentoAgendado, DateTime dataPagamentoAgendado, decimal valorPagamento, DateTime dataPagamento, decimal valorMulta, decimal valorDesconto)
         {
             IdCliente = idCliente;
             FormaPagamento = (int)formaPagamento;
@@ -48,26 +51,13 @@ namespace Dominio.Entidades
             DataPagamento = dataPagamento;
             ValorMulta = valorMulta;
             ValorDesconto = valorDesconto;
-        }
-
-        public PagamentosCliente(int formaPagamento, bool confirmadoPagamento, decimal valorPagamentoAgendado, DateTime dataPagamentoAgendado, decimal valorPagamento, DateTime dataPagamento, decimal valorMulta, decimal valorDesconto)
-        {
-            FormaPagamento = formaPagamento;
-            ConfirmadoPagamento = confirmadoPagamento;
-            ValorPagamentoAgendado = valorPagamentoAgendado;
-            DataPagamentoAgendado = dataPagamentoAgendado;
-            ValorPagamento = valorPagamento;
-            DataPagamento = dataPagamento;
-            ValorMulta = valorMulta;
-            ValorDesconto = valorDesconto;
             Validacao();
         }
-        public PagamentosCliente()
+
+        public Pagamento()
         {
 
         }
-
-       
 
         public bool Validacao()
         {

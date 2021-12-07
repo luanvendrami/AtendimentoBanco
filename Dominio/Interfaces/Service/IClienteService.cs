@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Dominio.Interfaces.Service
 {
-    public interface ICadastroClienteService
+    public interface IClienteService
     {
-        string CadastroCliente(ClienteDto dto);
-        DadosCliente RetornaPorId(int id);
-        string AtualizarDados(int id, ClienteDto dto);
+        string CadastroCliente(BancoDto dto);
+        Cliente RetornaPorId(int id);
+        string AtualizarDados(int id, BancoDto dto);
         string DeletarDados(int id);
     }
 }

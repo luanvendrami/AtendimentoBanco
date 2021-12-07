@@ -16,14 +16,14 @@ namespace Infra.CrossCuting.IoC
 
         public static void InjeçaoServices(this IServiceCollection services)
         {
-            services.AddScoped<ICadastroClienteService, CadastroClienteService>();
+            services.AddScoped<IClienteService, ClienteService>();
         }
 
         public static void InjeçaoRepositorio(this IServiceCollection services)
         {
-            services.AddScoped<ICadastroClienteRepositorio, CadastroClienteRepositorio>();
-            services.AddScoped<IEnderecoClienteRepositorio, EnderecoClienteRepositorio>();
-            services.AddScoped<IPagamentosRepositorio, PagamentosRepositorio>();
+            services.AddScoped<IClienteRepositorio, ClienteRepositorio>();
+            services.AddScoped<IEnderecoRepositorio, EnderecoRepositorio>();
+            services.AddScoped<IPagamentoRepositorio, PagamentoRepositorio>();
         }
     }
 }

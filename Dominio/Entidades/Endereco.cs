@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dominio.Entidades
 {
-    public class EnderecoDoCliente
+    public class Endereco
     {
         public int Id { get; set; }
         public string Uf { get; set; }
@@ -20,9 +20,9 @@ namespace Dominio.Entidades
 
 
         [ForeignKey("IdCliente")]
-        public DadosCliente EnderecoNavegation { get; set; }
+        public Cliente EnderecoNavegation { get; set; }
 
-        public EnderecoDoCliente(DadosCliente navegation, string uf, string cidade, string bairro, string rua, string numeroResidencia, string complemento)
+        public Endereco(Cliente navegation, string uf, string cidade, string bairro, string rua, string numeroResidencia, string complemento)
         {
             EnderecoNavegation = navegation;
             Uf = uf;
@@ -33,7 +33,7 @@ namespace Dominio.Entidades
             Complemento = complemento;
         }
 
-        public EnderecoDoCliente(int idCliente, string uf, string cidade, string bairro, string rua, string numeroResidencia, string complemento)
+        public Endereco(int idCliente, string uf, string cidade, string bairro, string rua, string numeroResidencia, string complemento)
         {
             IdCliente = idCliente;
             Uf = uf;
@@ -44,12 +44,12 @@ namespace Dominio.Entidades
             Complemento = complemento;
         }
 
-        public EnderecoDoCliente()
+        public Endereco()
         {
 
         }
 
-        public EnderecoDoCliente(string uf, string cidade, string bairro, string rua, string numeroResidencia, string complemento)
+        public Endereco(string uf, string cidade, string bairro, string rua, string numeroResidencia, string complemento)
         {
             Uf = uf;
             Cidade = cidade;

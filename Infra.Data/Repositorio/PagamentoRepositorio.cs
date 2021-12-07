@@ -7,12 +7,12 @@ using System.Linq;
 
 namespace Infra.Data.Repositorio
 {
-    public class PagamentosRepositorio : BaseRepositorio<PagamentosCliente>, IPagamentosRepositorio
+    public class PagamentoRepositorio : BaseRepositorio<Pagamento>, IPagamentoRepositorio
     {
-        public PagamentosRepositorio(ContextoSQL context) : base(context)
+        public PagamentoRepositorio(ContextoSQL context) : base(context)
         {
         }
-        public PagamentosCliente RetornaPagamentoId(int id)
+        public Pagamento RetornaPagamentoId(int id)
         {
             return _context.Pagamento.AsNoTracking().FirstOrDefault(n => n.Id == id);
         }

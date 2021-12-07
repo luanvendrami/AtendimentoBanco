@@ -6,24 +6,25 @@ using Dominio.Modelos;
 
 namespace CadastroCliente.Service
 {
-    public class CadastroClienteService : ICadastroClienteService
+    public class ClienteService : IClienteService
     {
-        private readonly ICadastroClienteRepositorio _informacaoClienteRepositorio;
-        private readonly IEnderecoClienteRepositorio _enderecoClienteMapeamento;
-        private readonly IPagamentosRepositorio _pagamentosRepositorio;
+        private readonly IClienteRepositorio _informacaoClienteRepositorio;
+        private readonly IEnderecoRepositorio _enderecoClienteMapeamento;
+        private readonly IPagamentoRepositorio _pagamentosRepositorio;
 
-        public CadastroClienteService(ICadastroClienteRepositorio informacaoClienteRepositorio, IEnderecoClienteRepositorio enderecoClienteMapeamento, IPagamentosRepositorio pagamentosRepositorio)
+        public ClienteService(IClienteRepositorio informacaoClienteRepositorio, IEnderecoRepositorio enderecoClienteMapeamento, IPagamentoRepositorio pagamentosRepositorio)
         {
             _informacaoClienteRepositorio = informacaoClienteRepositorio;
             _enderecoClienteMapeamento = enderecoClienteMapeamento;
             _pagamentosRepositorio = pagamentosRepositorio;
         }
 
-        public string CadastroCliente(ClienteDto dto)
+        //Metodo para cadastro de clientes.
+        public string CadastroCliente(BancoDto dto)
         {
-            var entidadeCliente = new DadosCliente(dto.NomeCompleto, dto.Cpf, dto.Rg, dto.DataNascimento);
-            var entidadeEndereco = new EnderecoDoCliente(entidadeCliente, dto.Uf, dto.Cidade, dto.Bairro, dto.Rua, dto.NumeroResidencia, dto.Complemento);
-            var entidadePagamento = new PagamentosCliente(entidadeCliente, dto.FormaPagamento, dto.ConfirmadoPagamento, dto.ValorPagamentoAgendado, dto.DataPagamentoAgendado, dto.ValorPagamento, dto.DataPagamento, dto.ValorMulta, dto.ValorDesconto);
+            var entidadeCliente = new Cliente(dto.NomeCompleto, dto.Cpf, dto.Rg, dto.DataNascimento);
+            var entidadeEndereco = new Endereco(entidadeCliente, dto.Uf, dto.Cidade, dto.Bairro, dto.Rua, dto.NumeroResidencia, dto.Complemento);
+            var entidadePagamento = new Pagamento(entidadeCliente, dto.FormaPagamento, dto.ConfirmadoPagamento, dto.ValorPagamentoAgendado, dto.DataPagamentoAgendado, dto.ValorPagamento, dto.DataPagamento, dto.ValorMulta, dto.ValorDesconto);
             if (entidadeCliente.Validacao() && entidadeEndereco.Validacao() && entidadePagamento.Validacao())
             {
                 _informacaoClienteRepositorio.Adicionar(entidadeCliente);
@@ -38,22 +39,24 @@ namespace CadastroCliente.Service
             } 
         }
 
-        public DadosCliente RetornaPorId(int id)
+        //Metodo que retorna o Id pesquisado.
+        public Cliente RetornaPorId(int id)
         {
             var consultaRepositorio = _informacaoClienteRepositorio.ConsultaId(id);
             return consultaRepositorio;
         }
 
-        public string AtualizarDados(int id, ClienteDto dto)
+        //Metodo que atualiza os dados com o Id fornecido.
+        public string AtualizarDados(int id, BancoDto dto)
         {
             var consultaRepositorio = _informacaoClienteRepositorio.RetornaClientId(id);
             if (consultaRepositorio.Id == id)
             {    
-                var dadosCliente = new DadosCliente(consultaRepositorio.Id, dto.NomeCompleto, dto.Cpf, dto.Rg, dto.DataNascimento);
+                var dadosCliente = new Cliente(consultaRepositorio.Id, dto.NomeCompleto, dto.Cpf, dto.Rg, dto.DataNascimento);
                 consultaRepositorio = dadosCliente;
-                var entidadeEndereco = new EnderecoDoCliente(consultaRepositorio.Id, dto.Uf, dto.Cidade, dto.Bairro, dto.Rua, dto.NumeroResidencia, dto.Complemento);
+                var entidadeEndereco = new Endereco(consultaRepositorio.Id, dto.Uf, dto.Cidade, dto.Bairro, dto.Rua, dto.NumeroResidencia, dto.Complemento);
                 consultaRepositorio.Endereco = entidadeEndereco;
-                var entidadePagamento = new PagamentosCliente(consultaRepositorio.Id, dto.FormaPagamento, dto.ConfirmadoPagamento, dto.ValorPagamentoAgendado, dto.DataPagamentoAgendado, dto.ValorPagamento, dto.DataPagamento, dto.ValorMulta, dto.ValorDesconto);
+                var entidadePagamento = new Pagamento(consultaRepositorio.Id, dto.FormaPagamento, dto.ConfirmadoPagamento, dto.ValorPagamentoAgendado, dto.DataPagamentoAgendado, dto.ValorPagamento, dto.DataPagamento, dto.ValorMulta, dto.ValorDesconto);
                 consultaRepositorio.Pagamentos = entidadePagamento;
 
                 _informacaoClienteRepositorio.Atualizar(consultaRepositorio);
@@ -63,6 +66,7 @@ namespace CadastroCliente.Service
             return $"Alterado com sucesso!";
         }
 
+        //Metodo que exclui o cliente com o Id fornecido.
         public string DeletarDados(int id)
         {
             var consultaRepositorio = _informacaoClienteRepositorio.RetornaClientId(id);

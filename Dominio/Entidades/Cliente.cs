@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Dominio.Entidades
 {
-    public class DadosCliente
+    public class Cliente
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -20,16 +20,16 @@ namespace Dominio.Entidades
         public DateTime DataNascimento { get; set; }
 
 #nullable enable
-        public virtual PagamentosCliente? Pagamentos { get; set; }
-        public virtual EnderecoDoCliente? Endereco { get; set; }
+        public virtual Pagamento? Pagamentos { get; set; }
+        public virtual Endereco? Endereco { get; set; }
 #nullable disable
 
-        public DadosCliente()
+        public Cliente()
         {
  
         }
 
-        public DadosCliente(string nomeCompleto, string cpf, string rg, DateTime dataNascimento, PagamentosCliente pagamentos, EnderecoDoCliente endereco)
+        public Cliente(string nomeCompleto, string cpf, string rg, DateTime dataNascimento, Pagamento pagamentos, Endereco endereco)
         {
             NomeCompleto = nomeCompleto;
             Cpf = cpf;
@@ -39,7 +39,7 @@ namespace Dominio.Entidades
             Endereco = endereco;
         }
 
-        public DadosCliente(string nomeCompleto, string cpf, string rg, DateTime dataNascimento)
+        public Cliente(string nomeCompleto, string cpf, string rg, DateTime dataNascimento)
         {
             NomeCompleto = nomeCompleto;
             Cpf = cpf;
@@ -47,7 +47,7 @@ namespace Dominio.Entidades
             DataNascimento = dataNascimento;
         }
 
-        public DadosCliente(int id, string nomeCompleto, string cpf, string rg, DateTime dataNascimento)
+        public Cliente(int id, string nomeCompleto, string cpf, string rg, DateTime dataNascimento)
         {
             Id = id;
             NomeCompleto = nomeCompleto;

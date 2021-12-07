@@ -10,16 +10,16 @@ using System.Threading.Tasks;
 namespace AtendimentoBanco.Controllers
 {
     [ApiController, Route("[controller]")]
-    public class CadastroClientesControllers : ControllerBase
+    public class ClientesControllers : ControllerBase
     {
-        private readonly ICadastroClienteService _cadastroClienteService;
+        private readonly IClienteService _cadastroClienteService;
 
-        public CadastroClientesControllers(ICadastroClienteService cadastroClienteService)
+        public ClientesControllers(IClienteService cadastroClienteService)
         {
             _cadastroClienteService = cadastroClienteService;
         }
 
-        [HttpGet("RetornaCadastroClienteId")]
+        [HttpGet("RetornaClienteId")]
         public ActionResult CadastrosId([FromQuery] int id)
         {
             try
@@ -34,7 +34,7 @@ namespace AtendimentoBanco.Controllers
         }
 
         [HttpPost("CadastroCliente")]
-        public ActionResult CadastroCliente([FromForm]ClienteDto dto)
+        public ActionResult CadastroCliente([FromForm]BancoDto dto)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace AtendimentoBanco.Controllers
         }
 
         [HttpPut("AtualizarCadastroCliente")]
-        public ActionResult AtualizarCliente(int id, [FromForm] ClienteDto dto)
+        public ActionResult AtualizarCliente(int id, [FromForm] BancoDto dto)
         {
             try
             {
@@ -63,7 +63,7 @@ namespace AtendimentoBanco.Controllers
             }
         }
 
-        [HttpDelete("DeletarDados")]
+        [HttpDelete("DeletarCliente")]
         public ActionResult DeletarDados(int id)
         {
             try

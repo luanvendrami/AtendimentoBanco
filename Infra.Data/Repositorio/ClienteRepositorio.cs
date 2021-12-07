@@ -11,20 +11,20 @@ using System.Threading.Tasks;
 
 namespace Infra.Data.Repositorio
 {
-    public class CadastroClienteRepositorio : BaseRepositorio<DadosCliente>, ICadastroClienteRepositorio
+    public class ClienteRepositorio : BaseRepositorio<Cliente>, IClienteRepositorio
     {
-        public CadastroClienteRepositorio(ContextoSQL context) : base(context)
+        public ClienteRepositorio(ContextoSQL context) : base(context)
         {
         }
 
-        public DadosCliente RetornaClientId(int id)
+        public Cliente RetornaClientId(int id)
         {
             return _context.Cliente.AsNoTracking()
                 .Include(x => x.Pagamentos)
                 .Include(x => x.Endereco)
                 .FirstOrDefault(n => n.Id == id);
         }
-        public DadosCliente ConsultaId(int id)
+        public Cliente ConsultaId(int id)
         {
             return _context.Cliente.AsNoTracking().FirstOrDefault(n => n.Id == id);
         }

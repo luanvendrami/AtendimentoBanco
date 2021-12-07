@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Infra.Data.Mapeamento
 {
-    public class CadastroClienteMapeamento : IEntityTypeConfiguration<DadosCliente>
+    public class ClienteMapeamento : IEntityTypeConfiguration<Cliente>
     {
-        public void Configure(EntityTypeBuilder<DadosCliente> builder)
+        public void Configure(EntityTypeBuilder<Cliente> builder)
         {
             builder.HasKey(p => p.Id);
 
@@ -33,8 +33,8 @@ namespace Infra.Data.Mapeamento
                 .HasColumnType("datetime")
                 .IsRequired(); ;
 
-            builder.HasOne(x => x.Endereco).WithOne(x => x.EnderecoNavegation).HasForeignKey<EnderecoDoCliente>(x => x.IdCliente);
-            builder.HasOne(x => x.Pagamentos).WithOne(x => x.PagamentoNavegation).HasForeignKey<PagamentosCliente>(x => x.IdCliente);
+            builder.HasOne(x => x.Endereco).WithOne(x => x.EnderecoNavegation).HasForeignKey<Endereco>(x => x.IdCliente);
+            builder.HasOne(x => x.Pagamentos).WithOne(x => x.PagamentoNavegation).HasForeignKey<Pagamento>(x => x.IdCliente);
         }
     }
 }

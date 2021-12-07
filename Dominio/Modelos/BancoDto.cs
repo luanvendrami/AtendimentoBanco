@@ -11,13 +11,15 @@ using System.Threading.Tasks;
 
 namespace Dominio.Modelos
 {
-    public class ClienteDto
+    public class BancoDto
     {
+        //Informações do cliente
         public string NomeCompleto { get; set; }
         public string Cpf { get; set; }
         public string Rg { get; set; }
         public DateTime DataNascimento { get; set; }
 
+        //Informações do endereço do cliente
         public string Uf { get; set; }
         public string Cidade { get; set; }
         public string Bairro { get; set; }
@@ -25,6 +27,7 @@ namespace Dominio.Modelos
         public string NumeroResidencia { get; set; }
         public string Complemento { get; set; }
 
+        //Informação de pagamento do cliente
         public TipoPagamento FormaPagamento { get; set; }
         public bool ConfirmadoPagamento { get; set; }
         public decimal ValorPagamentoAgendado { get; set; }
