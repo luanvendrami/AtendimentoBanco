@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 namespace AtendimentoBanco.Controllers
 {
     [ApiController, Route("[controller]")]
-    public class ClientesControllers : ControllerBase
+    public class ClientesController : ControllerBase
     {
         private readonly IClienteService _cadastroClienteService;
 
-        public ClientesControllers(IClienteService cadastroClienteService)
+        public ClientesController(IClienteService cadastroClienteService)
         {
             _cadastroClienteService = cadastroClienteService;
         }
