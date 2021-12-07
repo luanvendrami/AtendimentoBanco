@@ -13,17 +13,23 @@ namespace Dominio.Entidades
         public decimal Desconto { get; private set; }
         public int IdPagamento { get; private set; }
 
-        public PagamentoTaxas(int id, decimal juros, decimal desconto, int idPagamento)
+        public PagamentoTaxas(decimal juros, decimal desconto)
         {
-            Id = id;
             Juros = juros;
             Desconto = desconto;
-            IdPagamento = idPagamento;
+            Validacao();
         }
 
         public PagamentoTaxas()
         {
 
+        }
+
+        public bool Validacao()
+        {
+            if (!string.IsNullOrEmpty(Juros.ToString()) && !string.IsNullOrEmpty(Desconto.ToString()))
+                return true;
+            return false;
         }
     }
 }
