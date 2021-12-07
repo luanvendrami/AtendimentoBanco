@@ -4,6 +4,7 @@ using Dominio.Interfaces.Service;
 using Infra.Data.Contexto;
 using Infra.Data.Repositorio;
 using Microsoft.Extensions.DependencyInjection;
+using Pagamento.Service;
 
 namespace Infra.CrossCuting.IoC
 {
@@ -17,6 +18,7 @@ namespace Infra.CrossCuting.IoC
         public static void InjeçaoServices(this IServiceCollection services)
         {
             services.AddScoped<IClienteService, ClienteService>();
+            services.AddScoped<IPagamentoService, PagametnoService>();
         }
 
         public static void InjeçaoRepositorio(this IServiceCollection services)
