@@ -28,5 +28,13 @@ namespace Infra.Data.Repositorio
         {
             return _context.Cliente.AsNoTracking().FirstOrDefault(n => n.Id == id);
         }
+
+        public List<Cliente> RetornaClientes()
+        {
+            return _context.Cliente.AsNoTracking()
+                .Include(x => x.Endereco)
+                .Include(x => x.Pagamentos)
+                .ToList();
+        }
     }
 }

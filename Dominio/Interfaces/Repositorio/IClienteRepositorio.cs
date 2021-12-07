@@ -12,5 +12,6 @@ namespace Dominio.Interfaces.Repositorio
     {
         Cliente RetornaClientId(int id);
         Cliente ConsultaId(int id);
+        List<Cliente> RetornaClientes();
     }
 }
