@@ -48,7 +48,7 @@ namespace AtendimentoBanco.Controllers
         }
 
         [HttpPost("CadastroCliente")]
-        public ActionResult CadastroCliente([FromForm]ClienteDto dto)
+        public ActionResult CadastroCliente([FromForm] DadosDto dto)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace AtendimentoBanco.Controllers
         }
 
         [HttpPut("AtualizarCadastroCliente")]
-        public ActionResult AtualizarCliente(int id, [FromForm] ClienteDto dto)
+        public ActionResult AtualizarCliente(int id, [FromForm] DadosDto dto)
         {
             try
             {
