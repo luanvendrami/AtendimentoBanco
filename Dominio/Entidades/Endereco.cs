@@ -9,14 +9,14 @@ namespace Dominio.Entidades
 {
     public class Endereco
     {
-        public int Id { get; set; }
-        public string Uf { get; set; }
-        public string Cidade { get; set; }
-        public string Bairro { get; set; }
-        public string Rua { get; set; }
-        public string NumeroResidencia { get; set; }
-        public string Complemento { get; set; }
-        public int IdCliente { get; set; }
+        public int Id { get; private set; }
+        public string Uf { get; private set; }
+        public string Cidade { get; private set; }
+        public string Bairro { get; private set; }
+        public string Rua { get; private set; }
+        public string NumeroResidencia { get; private set; }
+        public string Complemento { get; private set; }
+        public int IdCliente { get; private set; }
 
 
         [ForeignKey("IdCliente")]

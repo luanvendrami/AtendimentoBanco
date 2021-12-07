@@ -13,11 +13,11 @@ namespace Dominio.Entidades
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-        public string NomeCompleto { get; set; }
-        public string Cpf { get;  set; }
-        public string Rg { get; set; }
-        public DateTime DataNascimento { get; set; }
+        public int Id { get; private set; }
+        public string NomeCompleto { get; private set; }
+        public string Cpf { get; private set; }
+        public string Rg { get; private set; }
+        public DateTime DataNascimento { get; private set; }
 
 #nullable enable
         public virtual Pagamento? Pagamentos { get; set; }
