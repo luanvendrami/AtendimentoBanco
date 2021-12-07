@@ -10,9 +10,9 @@ namespace Dominio.Interfaces.Service
 {
     public interface IClienteService
     {
-        string CadastroCliente(BancoDto dto);
+        string CadastroCliente(DadosDto dto);
         Cliente RetornaPorId(int id);
-        string AtualizarDados(int id, BancoDto dto);
+        string AtualizarDados(int id, DadosDto dto);
         string DeletarDados(int id);
         List<Cliente> RetornaTodosClientes();
     }
