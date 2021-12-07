@@ -13,8 +13,8 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-
 namespace AtendimentoBanco
 {
     public class Startup
@@ -27,6 +27,7 @@ namespace AtendimentoBanco
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        [Obsolete]
         public void ConfigureServices(IServiceCollection services)
         {
             services.ConexaoBanco();
@@ -36,10 +37,13 @@ namespace AtendimentoBanco
             services.AddDbContext<ContextoSQL>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("Contexto")));
 
+            services.AddControllers().AddJsonOptions(options =>
+            options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AtendimentoBanco", Version = "v1" });
+                c.UseInlineDefinitionsForEnums();
             });
         }
 

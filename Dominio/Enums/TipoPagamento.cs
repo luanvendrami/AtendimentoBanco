@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dominio.Enums
 {
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TipoPagamento
     {
         [Description("Sem forma de pagamento")]
