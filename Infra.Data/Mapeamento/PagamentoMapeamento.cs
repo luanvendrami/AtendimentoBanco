@@ -49,6 +49,14 @@ namespace Infra.Data.Mapeamento
                .HasColumnType("decimal")
                .IsRequired();
 
+            builder.Property(p => p.Juros)
+               .HasColumnType("decimal")
+               .IsRequired();
+
+            builder.Property(p => p.Desconto)
+               .HasColumnType("decimal")
+               .IsRequired();
+
             builder.Property(p => p.IdCliente)
                .HasColumnType("int")
                .IsRequired();

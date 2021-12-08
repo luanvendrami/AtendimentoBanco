@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Dominio.Entidades
 {
     public class Pagamento
-    {
+    {  
         public int Id { get; private set; }
         public int FormaPagamento { get; private set; }
         public bool ConfirmadoPagamento { get; private set; }
@@ -19,6 +19,8 @@ namespace Dominio.Entidades
         public DateTime DataPagamento { get; private set; }
         public decimal ValorMulta { get; private set; }
         public decimal ValorDesconto { get; private set; }
+        public decimal Juros { get; private set; }
+        public decimal Desconto { get; private set; }
         public int IdCliente { get; private set; }
 
         [ForeignKey("IdCliente")]

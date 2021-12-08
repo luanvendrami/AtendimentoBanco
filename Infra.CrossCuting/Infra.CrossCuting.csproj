@@ -8,7 +8,6 @@
     <ProjectReference Include="..\Aplicacao\CadastroCliente.csproj" />
     <ProjectReference Include="..\Dominio\Dominio.csproj" />
     <ProjectReference Include="..\Infra.Data\Infra.Data.csproj" />
-    <ProjectReference Include="..\Pagamento\Pagamento.csproj" />
   </ItemGroup>
 
   <ItemGroup>
