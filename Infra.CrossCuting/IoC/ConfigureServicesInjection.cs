@@ -14,12 +14,12 @@ namespace Infra.CrossCuting.IoC
             services.AddScoped<ContextoSQL>();
         }
 
-        public static void InjeçaoServices(this IServiceCollection services)
+        public static void InjecaoServices(this IServiceCollection services)
         {
             services.AddScoped<IClienteService, ClienteService>();
         }
 
-        public static void InjeçaoRepositorio(this IServiceCollection services)
+        public static void InjecaoRepositorio(this IServiceCollection services)
         {
             services.AddScoped<IClienteRepositorio, ClienteRepositorio>();
             services.AddScoped<IEnderecoRepositorio, EnderecoRepositorio>();

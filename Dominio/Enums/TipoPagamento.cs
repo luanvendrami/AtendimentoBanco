@@ -13,7 +13,7 @@ namespace Dominio.Enums
         [Description("Sem forma de pagamento")]
         Sem_Pagamento = 0,
         [Description("Cartão de crédito")]
-        Carttao_Credito = 1,
+        Cartao_Credito = 1,
         [Description("Cartão de débito")]
         Cartao_Debito = 2,
         [Description("Boleto bancário")]

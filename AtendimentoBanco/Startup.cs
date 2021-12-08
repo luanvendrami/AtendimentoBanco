@@ -31,8 +31,8 @@ namespace AtendimentoBanco
         public void ConfigureServices(IServiceCollection services)
         {
             services.ConexaoBanco();
-            services.InjeçaoServices();
-            services.InjeçaoRepositorio();
+            services.InjecaoServices();
+            services.InjecaoRepositorio();
 
             services.AddDbContext<ContextoSQL>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("Contexto")));

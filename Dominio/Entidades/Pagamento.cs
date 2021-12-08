@@ -27,17 +27,17 @@ namespace Dominio.Entidades
         public virtual Cliente PagamentoNavegation { get; set; }
 
         //Construtor usada para o metodo de cadastro de clientes.
-        public Pagamento(Cliente navegation, TipoPagamento formaPagamento, bool confirmadoPagamento, decimal valorPagamentoAgendado, DateTime dataPagamentoAgendado, DateTime dataPagamento, decimal juros, decimal desconto, decimal valorPagamento)
+        public Pagamento(Cliente navegation, TipoPagamento formaPagamento, bool confirmadoPagamento, decimal valorPago, DateTime vencimento, DateTime dataPagamento, decimal juros, decimal desconto, decimal valorPagamento)
         {
             PagamentoNavegation = navegation;
             FormaPagamento = (int)formaPagamento;
             ConfirmadoPagamento = confirmadoPagamento;
-            ValorPagamentoAgendado = valorPagamentoAgendado;
-            DataPagamentoAgendado = dataPagamentoAgendado;           
+            ValorPagamentoAgendado = valorPago;
+            DataPagamentoAgendado = vencimento;           
             DataPagamento = dataPagamento;    
-            Juros = PagamentoAtrasado(formaPagamento, valorPagamento, dataPagamento, dataPagamentoAgendado, valorPagamentoAgendado, juros);
-            Desconto = 0;
-            ValorPagamento = ValoresFinais(valorPagamento, juros, desconto);      
+            Juros = PagamentoAtrasado(formaPagamento, dataPagamento, vencimento, valorPago, juros);
+            Desconto = PagamentoAdiantado(formaPagamento, dataPagamento, vencimento, valorPago, desconto);
+            ValorPagamento = ValoresFinais(valorPagamento, Juros, Desconto);      
             Validacao();
         }
 
@@ -68,43 +68,43 @@ namespace Dominio.Entidades
             return false;
         }
 
-        public static decimal PagamentoAtrasado(TipoPagamento formaPagamento, decimal valorPagamento, DateTime dataPagamento, DateTime dataPagamentoAgendado, decimal valorPagamentoAgendado, decimal juros)
+        public static decimal PagamentoAtrasado(TipoPagamento formaPagamento, DateTime dataPagamento, DateTime vencimento, decimal valorPago, decimal juros)
         {
-            if(dataPagamento > dataPagamentoAgendado)
+            if(dataPagamento > vencimento)
             {
-                var data = dataPagamento.Subtract(dataPagamentoAgendado).TotalDays;
+                var data = dataPagamento.Subtract(vencimento).TotalDays;
                 double porcentagem; 
                 if (data != 0)
                 {
                     switch (formaPagamento)
                     {
                         case (TipoPagamento)1: 
-                            porcentagem = 0.1 * (double)valorPagamentoAgendado;
+                            porcentagem = 0.1 * (double)valorPago;
                             porcentagem *= data;
                             juros = (decimal)porcentagem;
                             return juros;
                         case (TipoPagamento)2:
-                            porcentagem = 0.03 * (double)valorPagamentoAgendado;
+                            porcentagem = 0.03 * (double)valorPago;
                             porcentagem *= data;
                             juros = (decimal)porcentagem;
                             return juros;
                         case (TipoPagamento)3:
-                            porcentagem = 0.03 * (double)valorPagamentoAgendado;
+                            porcentagem = 0.03 * (double)valorPago;
                             porcentagem *= data;
                             juros = (decimal)porcentagem;
                             return juros;
                         case (TipoPagamento)4:
-                            porcentagem = 0.02 * (double)valorPagamentoAgendado;
+                            porcentagem = 0.02 * (double)valorPago;
                             porcentagem *= data;
                             juros = (decimal)porcentagem;
                             return juros;
                         case (TipoPagamento)5:
-                            porcentagem = 0.02 * (double)valorPagamentoAgendado;
+                            porcentagem = 0.02 * (double)valorPago;
                             porcentagem *= data;
                             juros = (decimal)porcentagem;
                             return juros;                            
                         case (TipoPagamento)6:
-                            porcentagem = 0.02 * (double)valorPagamentoAgendado;
+                            porcentagem = 0.02 * (double)valorPago;
                             porcentagem *= data;
                             juros = (decimal)porcentagem;
                             return juros;
@@ -115,9 +115,52 @@ namespace Dominio.Entidades
             return juros; 
         }
 
+        public static decimal PagamentoAdiantado(TipoPagamento formaPagamento, DateTime dataPagamento, DateTime vencimento, decimal valorPago, decimal desconto)
+        {
+            if(dataPagamento < vencimento)
+            {
+                var data = vencimento.Subtract(dataPagamento).TotalDays;
+                double porcentagem;
+                switch (formaPagamento)
+                {
+                    case (TipoPagamento)1:
+                        porcentagem = 0.0001 * (double)valorPago;
+                        porcentagem *= data;
+                        desconto = (decimal)porcentagem;
+                        return desconto;
+                    case (TipoPagamento)2:
+                        porcentagem = 0.01 * (double)valorPago;
+                        porcentagem *= data;
+                        desconto = (decimal)porcentagem;
+                        return desconto;
+                    case (TipoPagamento)3:
+                        porcentagem = 0.1 * (double)valorPago;
+                        porcentagem *= data;
+                        desconto = (decimal)porcentagem;
+                        return desconto;
+                    case (TipoPagamento)4:
+                        porcentagem = 0.1 * (double)valorPago;
+                        porcentagem *= data;
+                        desconto = (decimal)porcentagem;
+                        return desconto;
+                    case (TipoPagamento)5:
+                        porcentagem = 0.05 * (double)valorPago;
+                        porcentagem *= data;
+                        desconto = (decimal)porcentagem;
+                        return desconto;
+                    case (TipoPagamento)6:
+                        porcentagem = 0.0001 * (double)valorPago;
+                        porcentagem *= data;
+                        desconto = (decimal)porcentagem;
+                        return desconto;
+                }   
+            }
+            return desconto;
+        }
 
 
-        public static decimal ValoresFinais(decimal valorPagamento, decimal juros, decimal desconto)
+
+            public static decimal ValoresFinais(decimal valorPagamento, decimal juros, decimal desconto)
         {
             if(juros != 0)
             {
