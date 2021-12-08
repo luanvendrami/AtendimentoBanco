@@ -62,7 +62,7 @@ namespace CadastroCliente.Service
                 consultaRepositorio = dadosCliente;
                 var entidadeEndereco = new Endereco(consultaRepositorio.Id, dto.Uf, dto.Cidade, dto.Bairro, dto.Rua, dto.NumeroResidencia, dto.Complemento);
                 consultaRepositorio.Endereco = entidadeEndereco;
-                var entidadePagamento = new Pagamento(consultaRepositorio.Id, dto.FormaPagamento, dto.ConfirmadoPagamento, dto.ValorPagamentoAgendado, dto.DataPagamentoAgendado, dto.ValorPagamento, dto.DataPagamento, dto.ValorMulta, dto.ValorDesconto);
+                var entidadePagamento = new Pagamento(consultaRepositorio.Id, dto.FormaPagamento, dto.ConfirmadoPagamento, dto.ValorPagamentoAgendado, dto.DataPagamentoAgendado, dto.ValorPagamento, dto.DataPagamento);
                 consultaRepositorio.Pagamentos = entidadePagamento;
 
                 _clienteRepositorio.Atualizar(consultaRepositorio);

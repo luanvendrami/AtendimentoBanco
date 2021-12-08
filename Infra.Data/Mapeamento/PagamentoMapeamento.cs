@@ -15,6 +15,10 @@ namespace Infra.Data.Mapeamento
         {
             builder.HasKey(p => p.Id);
 
+            builder.Property(p => p.Id)
+                .ValueGeneratedOnAdd()
+                .UseIdentityColumn();
+
             builder.ToTable("Pagamento");
 
             builder.Property(p => p.FormaPagamento)
@@ -25,11 +29,11 @@ namespace Infra.Data.Mapeamento
                 .HasColumnType("bit")
                 .IsRequired();
 
-            builder.Property(p => p.ValorPagamentoAgendado)
+            builder.Property(p => p.ValorPago)
                 .HasColumnType("decimal")
                 .IsRequired();
 
-            builder.Property(p => p.DataPagamentoAgendado)
+            builder.Property(p => p.DataVencimento)
                 .HasColumnType("datetime")
                 .IsRequired();
 
@@ -39,14 +43,6 @@ namespace Infra.Data.Mapeamento
 
             builder.Property(p => p.DataPagamento)
                .HasColumnType("datetime")
-               .IsRequired();
-
-            builder.Property(p => p.ValorMulta)
-               .HasColumnType("decimal")
-               .IsRequired();
-
-            builder.Property(p => p.ValorDesconto)
-               .HasColumnType("decimal")
                .IsRequired();
 
             builder.Property(p => p.Juros)

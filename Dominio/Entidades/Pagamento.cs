@@ -13,12 +13,10 @@ namespace Dominio.Entidades
         public int Id { get; private set; }
         public int FormaPagamento { get; private set; }
         public bool ConfirmadoPagamento { get; private set; }
-        public decimal ValorPagamentoAgendado { get; private set; }
-        public DateTime DataPagamentoAgendado { get; private set; }
+        public decimal ValorPago { get; private set; }
+        public DateTime DataVencimento { get; private set; }
         public decimal ValorPagamento { get; private set; }
         public DateTime DataPagamento { get; private set; }
-        public decimal ValorMulta { get; private set; }
-        public decimal ValorDesconto { get; private set; }
         public decimal Juros { get; private set; }
         public decimal Desconto { get; private set; }
         public int IdCliente { get; private set; }
@@ -32,8 +30,8 @@ namespace Dominio.Entidades
             PagamentoNavegation = navegation;
             FormaPagamento = (int)formaPagamento;
             ConfirmadoPagamento = confirmadoPagamento;
-            ValorPagamentoAgendado = valorPago;
-            DataPagamentoAgendado = vencimento;           
+            ValorPago = valorPago;
+            DataVencimento = vencimento;           
             DataPagamento = dataPagamento;    
             Juros = PagamentoAtrasado(formaPagamento, dataPagamento, vencimento, valorPago, juros);
             Desconto = PagamentoAdiantado(formaPagamento, dataPagamento, vencimento, valorPago, desconto);
@@ -42,17 +40,15 @@ namespace Dominio.Entidades
         }
 
         //Construtor usada para o metodo atualização de cadastro para clientes.
-        public Pagamento(int idCliente, TipoPagamento formaPagamento, bool confirmadoPagamento, decimal valorPagamentoAgendado, DateTime dataPagamentoAgendado, decimal valorPagamento, DateTime dataPagamento, decimal valorMulta, decimal valorDesconto)
+        public Pagamento(int idCliente, TipoPagamento formaPagamento, bool confirmadoPagamento, decimal valorPagamentoAgendado, DateTime vencimento, decimal valorPago, DateTime dataPagamento)
         {
             IdCliente = idCliente;
             FormaPagamento = (int)formaPagamento;
             ConfirmadoPagamento = confirmadoPagamento;
-            ValorPagamentoAgendado = valorPagamentoAgendado;
-            DataPagamentoAgendado = dataPagamentoAgendado;
-            ValorPagamento = valorPagamento;
+            ValorPago = valorPagamentoAgendado;
+            DataVencimento = vencimento;
+            ValorPagamento = valorPago; 
             DataPagamento = dataPagamento;
-            ValorMulta = valorMulta;
-            ValorDesconto = valorDesconto;
             Validacao();
         }
 
@@ -63,7 +59,7 @@ namespace Dominio.Entidades
 
         public bool Validacao()
         {
-            if (!string.IsNullOrEmpty(FormaPagamento.ToString()) && !string.IsNullOrEmpty(ConfirmadoPagamento.ToString()) && !string.IsNullOrEmpty(ValorPagamentoAgendado.ToString()) && !string.IsNullOrEmpty(ValorPagamento.ToString()) && !string.IsNullOrEmpty(DataPagamento.ToString()) && !string.IsNullOrEmpty(ValorMulta.ToString()) && !string.IsNullOrEmpty(ValorDesconto.ToString()))
+            if (!string.IsNullOrEmpty(FormaPagamento.ToString()) && !string.IsNullOrEmpty(ConfirmadoPagamento.ToString()) && !string.IsNullOrEmpty(ValorPago.ToString()) && !string.IsNullOrEmpty(ValorPagamento.ToString()) && !string.IsNullOrEmpty(DataPagamento.ToString()))
                 return true;
             return false;
         }
@@ -158,9 +154,7 @@ namespace Dominio.Entidades
             return desconto;
         }
 
-
-
-            public static decimal ValoresFinais(decimal valorPagamento, decimal juros, decimal desconto)
+        public static decimal ValoresFinais(decimal valorPagamento, decimal juros, decimal desconto)
         {
             if(juros != 0)
             {
