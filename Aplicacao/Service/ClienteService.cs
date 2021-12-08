@@ -24,7 +24,7 @@ namespace CadastroCliente.Service
         {
             var entidadeCliente = new Cliente(dto.NomeCompleto, dto.Cpf, dto.Rg, dto.DataNascimento);
             var entidadeEndereco = new Endereco(entidadeCliente, dto.Uf, dto.Cidade, dto.Bairro, dto.Rua, dto.NumeroResidencia, dto.Complemento);
-            var entidadePagamento = new Pagamento(entidadeCliente, dto.FormaPagamento, dto.ConfirmadoPagamento, dto.ValorPagamentoAgendado, dto.DataPagamentoAgendado, dto.ValorPagamento, dto.DataPagamento, dto.ValorMulta, dto.ValorDesconto);
+            var entidadePagamento = new Pagamento(entidadeCliente, dto.FormaPagamento, dto.ConfirmadoPagamento, dto.ValorPagamentoAgendado, dto.DataPagamentoAgendado, dto.ValorPagamento, dto.DataPagamento, dto.ValorMulta, dto.ValorDesconto, 0);
             if (entidadeCliente.Validacao() && entidadeEndereco.Validacao() && entidadePagamento.Validacao())
             {
                 _clienteRepositorio.Adicionar(entidadeCliente);

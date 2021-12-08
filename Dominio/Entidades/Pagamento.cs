@@ -27,7 +27,7 @@ namespace Dominio.Entidades
         public virtual Cliente PagamentoNavegation { get; set; }
 
         //Construtor usada para o metodo de cadastro de clientes.
-        public Pagamento(Cliente navegation, TipoPagamento formaPagamento, bool confirmadoPagamento, decimal valorPagamentoAgendado, DateTime dataPagamentoAgendado, decimal valorPagamento, DateTime dataPagamento, decimal valorMulta, decimal valorDesconto)
+        public Pagamento(Cliente navegation, TipoPagamento formaPagamento, bool confirmadoPagamento, decimal valorPagamentoAgendado, DateTime dataPagamentoAgendado, decimal valorPagamento, DateTime dataPagamento, decimal valorMulta, decimal valorDesconto, decimal juros)
         {
             PagamentoNavegation = navegation;
             FormaPagamento = (int)formaPagamento;
@@ -38,6 +38,7 @@ namespace Dominio.Entidades
             DataPagamento = dataPagamento;
             ValorMulta = valorMulta;
             ValorDesconto = valorDesconto;
+            Juros = PagamentoAtrasado(formaPagamento, valorPagamento, dataPagamento, dataPagamentoAgendado, valorPagamentoAgendado, juros);
             Validacao();
         }
 
@@ -66,6 +67,53 @@ namespace Dominio.Entidades
             if (!string.IsNullOrEmpty(FormaPagamento.ToString()) && !string.IsNullOrEmpty(ConfirmadoPagamento.ToString()) && !string.IsNullOrEmpty(ValorPagamentoAgendado.ToString()) && !string.IsNullOrEmpty(ValorPagamento.ToString()) && !string.IsNullOrEmpty(DataPagamento.ToString()) && !string.IsNullOrEmpty(ValorMulta.ToString()) && !string.IsNullOrEmpty(ValorDesconto.ToString()))
                 return true;
             return false;
+        }
+
+        public static decimal PagamentoAtrasado(TipoPagamento formaPagamento, decimal valorPagamento, DateTime dataPagamento, DateTime dataPagamentoAgendado, decimal valorPagamentoAgendado, decimal juros)
+        {
+            if(dataPagamento > dataPagamentoAgendado)
+            {
+                var data = dataPagamento.Subtract(dataPagamentoAgendado).TotalDays;
+                double porcentagem; 
+                if (data != 0)
+                {
+                    switch (formaPagamento)
+                    {
+                        case (TipoPagamento)1: 
+                            porcentagem = 0.1 * (double)valorPagamentoAgendado;
+                            porcentagem *= data;
+                            juros = (decimal)porcentagem;
+                            return juros;
+                        case (TipoPagamento)2:
+                            porcentagem = 0.03 * (double)valorPagamentoAgendado;
+                            porcentagem *= data;
+                            juros = (decimal)porcentagem;
+                            return juros;
+                        case (TipoPagamento)3:
+                            porcentagem = 0.03 * (double)valorPagamentoAgendado;
+                            porcentagem *= data;
+                            juros = (decimal)porcentagem;
+                            return juros;
+                        case (TipoPagamento)4:
+                            porcentagem = 0.02 * (double)valorPagamentoAgendado;
+                            porcentagem *= data;
+                            juros = (decimal)porcentagem;
+                            return juros;
+                        case (TipoPagamento)5:
+                            porcentagem = 0.02 * (double)valorPagamentoAgendado;
+                            porcentagem *= data;
+                            juros = (decimal)porcentagem;
+                            return juros;                            
+                        case (TipoPagamento)6:
+                            porcentagem = 0.02 * (double)valorPagamentoAgendado;
+                            porcentagem *= data;
+                            juros = (decimal)porcentagem;
+                            return juros;
+                    }
+                }
+                
+            }
+            return juros; 
         }
     }
 }

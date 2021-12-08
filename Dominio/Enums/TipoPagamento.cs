@@ -23,6 +23,6 @@ namespace Dominio.Enums
         [Description("TED")]
         Ted = 5,
         [Description("Cheque")]
-        Cheque = 5
+        Cheque = 6
     }
 }

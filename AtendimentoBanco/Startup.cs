@@ -37,9 +37,11 @@ namespace AtendimentoBanco
             services.AddDbContext<ContextoSQL>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("Contexto")));
 
+            //Retorna os ENUMS com nomes
             services.AddControllers().AddJsonOptions(options =>
             options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
+            //Deixa retornar no metodo GET os JSON em INCLUDE
             services.AddControllersWithViews().AddNewtonsoftJson(options =>
             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
