@@ -27,18 +27,17 @@ namespace Dominio.Entidades
         public virtual Cliente PagamentoNavegation { get; set; }
 
         //Construtor usada para o metodo de cadastro de clientes.
-        public Pagamento(Cliente navegation, TipoPagamento formaPagamento, bool confirmadoPagamento, decimal valorPagamentoAgendado, DateTime dataPagamentoAgendado, decimal valorPagamento, DateTime dataPagamento, decimal valorMulta, decimal valorDesconto, decimal juros)
+        public Pagamento(Cliente navegation, TipoPagamento formaPagamento, bool confirmadoPagamento, decimal valorPagamentoAgendado, DateTime dataPagamentoAgendado, DateTime dataPagamento, decimal juros, decimal desconto, decimal valorPagamento)
         {
             PagamentoNavegation = navegation;
             FormaPagamento = (int)formaPagamento;
             ConfirmadoPagamento = confirmadoPagamento;
             ValorPagamentoAgendado = valorPagamentoAgendado;
-            DataPagamentoAgendado = dataPagamentoAgendado;
-            ValorPagamento = valorPagamento;
-            DataPagamento = dataPagamento;
-            ValorMulta = valorMulta;
-            ValorDesconto = valorDesconto;
+            DataPagamentoAgendado = dataPagamentoAgendado;           
+            DataPagamento = dataPagamento;    
             Juros = PagamentoAtrasado(formaPagamento, valorPagamento, dataPagamento, dataPagamentoAgendado, valorPagamentoAgendado, juros);
+            Desconto = 0;
+            ValorPagamento = ValoresFinais(valorPagamento, juros, desconto);      
             Validacao();
         }
 
@@ -114,6 +113,22 @@ namespace Dominio.Entidades
                 
             }
             return juros; 
+        }
+
+
+
+        public static decimal ValoresFinais(decimal valorPagamento, decimal juros, decimal desconto)
+        {
+            if(juros != 0)
+            {
+                valorPagamento += juros;
+                return valorPagamento;
+            }else if(desconto != 0)
+            {
+                valorPagamento -= desconto;
+                return valorPagamento;
+            }
+            return valorPagamento;
         }
     }
 }
