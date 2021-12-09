@@ -32,5 +32,7 @@ namespace AtendimentoBanco.Controllers
                 return BadRequest("Ocorreu um erro ao consultar a lista de clientes!");
             }
         }
+
+
     }
 }
