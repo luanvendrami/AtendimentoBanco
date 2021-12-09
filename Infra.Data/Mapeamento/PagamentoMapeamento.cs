@@ -25,33 +25,23 @@ namespace Infra.Data.Mapeamento
                 .HasColumnType("int")
                 .IsRequired();
 
-            builder.Property(p => p.ConfirmadoPagamento)
-                .HasColumnType("bit")
-                .IsRequired();
-
             builder.Property(p => p.ValorPago)
-                .HasColumnType("decimal")
-                .IsRequired();
+                .HasColumnType("decimal");
 
             builder.Property(p => p.DataVencimento)
-                .HasColumnType("datetime")
-                .IsRequired();
+                .HasColumnType("datetime");
 
-            builder.Property(p => p.ValorPagamento)
-               .HasColumnType("decimal")
-               .IsRequired();
+            builder.Property(p => p.ValorPagamentoComReajustes)
+               .HasColumnType("decimal");
 
             builder.Property(p => p.DataPagamento)
-               .HasColumnType("datetime")
-               .IsRequired();
+               .HasColumnType("datetime");
 
             builder.Property(p => p.Juros)
-               .HasColumnType("decimal")
-               .IsRequired();
+               .HasColumnType("decimal");
 
             builder.Property(p => p.Desconto)
-               .HasColumnType("decimal")
-               .IsRequired();
+               .HasColumnType("decimal");
 
             builder.Property(p => p.IdCliente)
                .HasColumnType("int")
