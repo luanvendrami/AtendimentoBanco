@@ -2,6 +2,7 @@
 using Dominio.Interfaces.Repositorio;
 using Dominio.Interfaces.Service;
 using Dominio.Modelos;
+using System;
 using System.Collections.Generic;
 
 namespace CadastroCliente.Service
@@ -22,21 +23,26 @@ namespace CadastroCliente.Service
         //Metodo para cadastro de clientes.
         public string CadastroCliente(DadosDto dto)
         {
-            var entidadeCliente = new Cliente(dto.NomeCompleto, dto.Cpf, dto.Rg, dto.DataNascimento);
-            var entidadeEndereco = new Endereco(entidadeCliente, dto.Uf, dto.Cidade, dto.Bairro, dto.Rua, dto.NumeroResidencia, dto.Complemento);
-            var entidadePagamento = new Pagamento(entidadeCliente, dto.FormaPagamento, dto.ConfirmadoPagamento, dto.ValorPagamentoAgendado,dto.DataPagamentoAgendado, dto.DataPagamento, 0, 0, dto.ValorPagamento);
-            if (entidadeCliente.Validacao() && entidadeEndereco.Validacao() && entidadePagamento.Validacao())
+            var consultaClienteExistente = _clienteRepositorio.ValidaBancoCliente(dto.Cpf, dto.Rg);
+            if(consultaClienteExistente == null)
             {
-                _clienteRepositorio.Adicionar(entidadeCliente);
-                _enderecoRepositorio.Adicionar(entidadeEndereco);
-                _pagamentoRepositorio.Adicionar(entidadePagamento);
-                
-                return $"Cliente cadastrado com sucesso!";
+                var entidadeCliente = new Cliente(dto.NomeCompleto, dto.Cpf, dto.Rg, dto.DataNascimento);
+                var entidadeEndereco = new Endereco(entidadeCliente, dto.Uf, dto.Cidade, dto.Bairro, dto.Rua, dto.NumeroResidencia, dto.Complemento);
+                var entidadePagamento = new Pagamento(entidadeCliente, dto.FormaPagamento);
+                if (entidadeCliente.Validacao() && entidadeEndereco.Validacao() && entidadePagamento.Validacao())
+                {
+                    _clienteRepositorio.Adicionar(entidadeCliente);
+                    _enderecoRepositorio.Adicionar(entidadeEndereco);
+                    _pagamentoRepositorio.Adicionar(entidadePagamento);
+
+                    return $"Cliente cadastrado com sucesso!";
+                }
+                else
+                {
+                    return $"Cliente não foi cadastrado, verifique as informações!";
+                }
             }
-            else
-            {
-                return $"Cliente não foi cadastrado, verifique as informações!";
-            } 
+            return $"Cliente já cadastrado!";
         }
 
         public List<Cliente> RetornaTodosClientes()
@@ -62,7 +68,7 @@ namespace CadastroCliente.Service
                 consultaRepositorio = dadosCliente;
                 var entidadeEndereco = new Endereco(consultaRepositorio.Id, dto.Uf, dto.Cidade, dto.Bairro, dto.Rua, dto.NumeroResidencia, dto.Complemento);
                 consultaRepositorio.Endereco = entidadeEndereco;
-                var entidadePagamento = new Pagamento(consultaRepositorio.Id, dto.FormaPagamento, dto.ConfirmadoPagamento, dto.ValorPagamentoAgendado, dto.DataPagamentoAgendado, dto.ValorPagamento, dto.DataPagamento);
+                var entidadePagamento = new Pagamento(consultaRepositorio.Id, dto.FormaPagamento);
                 consultaRepositorio.Pagamentos = entidadePagamento;
 
                 _clienteRepositorio.Atualizar(consultaRepositorio);
