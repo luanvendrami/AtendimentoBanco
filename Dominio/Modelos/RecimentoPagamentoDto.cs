@@ -11,5 +11,8 @@ namespace Dominio.Modelos
         public string NomeCompleto { get; set; }
         public string Cpf { get; set; }
         public string Rg { get; set; }
+
+        public decimal ValorPago { get; set; }
+        public bool EfetuarCompra { get; set; }
     }
 }

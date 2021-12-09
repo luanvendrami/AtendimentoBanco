@@ -10,6 +10,8 @@ namespace Dominio.Interfaces.Service
 {
     public interface IRecebimentoPagamentoService
     {
-        List<Cliente> CosultarNomeClienteDebito(RecimentoPagamentoDto dto);
+        Cliente CosultarNomeClienteDebito(RecimentoPagamentoDto dto);
+        string Pagamento(RecimentoPagamentoDto dto);
+        string Compra(RecimentoPagamentoDto dto);
     }
 }
