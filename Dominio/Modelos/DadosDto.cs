@@ -29,12 +29,6 @@ namespace Dominio.Modelos
 
         //Informação de pagamento do cliente
         public TipoPagamento FormaPagamento { get; set; }
-        public bool ConfirmadoPagamento { get; set; }
-        public decimal ValorPagamentoAgendado { get; set; }
-        public DateTime DataPagamentoAgendado { get; set; }
-        public decimal ValorPagamento { get; set; }
-        public DateTime DataPagamento { get; set; }
-        public decimal ValorMulta { get; set; }
-        public decimal ValorDesconto { get; set; }
+        public DateTime DataPagamento { get; private set; }
     }
 }
