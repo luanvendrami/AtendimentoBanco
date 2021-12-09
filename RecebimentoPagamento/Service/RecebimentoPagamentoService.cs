@@ -28,6 +28,7 @@ namespace RecebimentoPagamento.Service
             return consultaCliente;
         }
 
+        // ATUALIZAR NAO TA FUNCIONANDO VERIFICAR, ELE ESTA CRIANDO NOVO CAMPO NO BANCO E NAO ATUALIZANDO
         public string Compra(RecimentoPagamentoDto dto)
         {
             var buscaClienteDb = _clienteRepositorio.ValidaBancoCliente(dto.Cpf, dto.Rg);
