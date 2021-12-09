@@ -50,19 +50,29 @@ namespace Dominio.Entidades
 
         }
 
-        public bool Validacao()
+        public Pagamento(int idCliente, decimal valorPago, TipoPagamento formaPagamento, DateTime vencimento)
         {
-            if (!string.IsNullOrEmpty(FormaPagamento.ToString()))
-                return true;
-            return false;
+            IdCliente = idCliente;
+            ValorPago = valorPago;            
+            DataPagamento = DateTime.Now;
+            Juros = PagamentoAtrasado(formaPagamento, (DateTime)DataPagamento , vencimento, valorPago, 0);
+            Desconto = Desconto = PagamentoAdiantado(formaPagamento, (DateTime)DataPagamento, vencimento, valorPago, 0);
+            ValorPagamentoComReajustes = ValoresFinais(0, (decimal)Juros, (decimal)Desconto);
+        }
+
+        public Pagamento(int idCliente)
+        {
+            IdCliente = idCliente;
+            DataVencimento = DateTime.Now.AddDays(30);
         }
 
         public static decimal PagamentoAtrasado(TipoPagamento formaPagamento, DateTime dataPagamento, DateTime vencimento, decimal valorPago, decimal juros)
         {
-            if(dataPagamento > vencimento)
+            
+            if (dataPagamento > vencimento)
             {
                 var data = dataPagamento.Subtract(vencimento).TotalDays;
-                double porcentagem; 
+                double porcentagem;               
                 if (data != 0)
                 {
                     switch (formaPagamento)
@@ -98,10 +108,9 @@ namespace Dominio.Entidades
                             juros = (decimal)porcentagem;
                             return juros;
                     }
-                }
-                
+                }               
             }
-            return juros; 
+            return juros;
         }
 
         public static decimal PagamentoAdiantado(TipoPagamento formaPagamento, DateTime dataPagamento, DateTime vencimento, decimal valorPago, decimal desconto)
@@ -160,10 +169,12 @@ namespace Dominio.Entidades
             }
             return valorPagamentoComReajustes;
         }
+        public bool Validacao()
+        {
+            if (!string.IsNullOrEmpty(FormaPagamento.ToString()))
+                return true;
+            return false;
+        }
 
-        //Juros = PagamentoAtrasado(formaPagamento, dataPagamento, DataVencimento, valorPago, juros);
-        //Desconto = PagamentoAdiantado(formaPagamento, dataPagamento, DataVencimento, valorPago, desconto);
-        //ValorPagamentoComReajustes = ValoresFinais(valorPagamentoComReajustes, Juros, Desconto);
-        //DataVencimento = DateTime.Now.AddDays(30);  
     }
 }
