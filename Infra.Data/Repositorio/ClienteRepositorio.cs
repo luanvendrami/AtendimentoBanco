@@ -19,7 +19,9 @@ namespace Infra.Data.Repositorio
 
         public Cliente ValidaBancoCliente(string cpf, string rg)
         {
-            return _context.Cliente.AsNoTracking().FirstOrDefault(x => x.Cpf == cpf || x.Rg == rg);
+            return _context.Cliente.AsNoTracking()
+                .Include(x => x.Pagamentos)
+                .FirstOrDefault(x => x.Cpf == cpf || x.Rg == rg);
         }
         public Cliente RetornaClientId(int id)
         {
@@ -41,11 +43,11 @@ namespace Infra.Data.Repositorio
                 .ToList();
         }
 
-        public List<Cliente> ConsultaPorNomeLista(string nome, string cpf, string rg)
+        public Cliente ConsultaPorNome(string nome, string cpf, string rg)
         {
             return _context.Cliente.AsNoTracking()
                 .Include(x => x.Pagamentos)
-                .Where(x => x.NomeCompleto == nome || x.Cpf == cpf || x.Rg == rg).ToList();
+                .FirstOrDefault(x => x.NomeCompleto == nome || x.Cpf == cpf || x.Rg == rg);
         }
     }
 }

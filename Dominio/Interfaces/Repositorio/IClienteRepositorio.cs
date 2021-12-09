@@ -13,7 +13,7 @@ namespace Dominio.Interfaces.Repositorio
         Cliente ValidaBancoCliente(string cpf, string rg);
         Cliente RetornaClientId(int id);
         Cliente ConsultaId(int id);
-        List<Cliente> RetornaClientes(); 
-        List<Cliente> ConsultaPorNomeLista(string nome, string cpf, string rg);
+        List<Cliente> RetornaClientes();
+        Cliente ConsultaPorNome(string nome, string cpf, string rg);
     }
 }
