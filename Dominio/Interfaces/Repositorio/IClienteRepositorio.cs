@@ -10,8 +10,10 @@ namespace Dominio.Interfaces.Repositorio
 {
     public interface IClienteRepositorio : IBaseRepositorio<Cliente>
     {
+        Cliente ValidaBancoCliente(string cpf, string rg);
         Cliente RetornaClientId(int id);
         Cliente ConsultaId(int id);
-        List<Cliente> RetornaClientes();
+        List<Cliente> RetornaClientes(); 
+        List<Cliente> ConsultaPorNomeLista(string nome, string cpf, string rg);
     }
 }
