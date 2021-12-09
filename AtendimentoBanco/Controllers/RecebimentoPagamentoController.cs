@@ -33,6 +33,33 @@ namespace AtendimentoBanco.Controllers
             }
         }
 
+        [HttpPost("Compra")]
+        public ActionResult EfetuandoCompra([FromForm] RecimentoPagamentoDto dto)
+        {
+            try
+            {
+                var retorno = _recebimentoPagamentoService.Compra(dto);
+                return Ok(retorno);
+            }
+            catch
+            {
+                return BadRequest("Ocorreu um erro ao efetuar a compra!");
+            }
+        }
 
+        [HttpPost]
+        public ActionResult SalvarPagamentoPorCliente([FromForm]RecimentoPagamentoDto dto)
+        {
+            try
+            {
+                var retorno = _recebimentoPagamentoService.Pagamento(dto);
+                return Ok(retorno);
+            }
+            catch
+            {
+                return BadRequest("Ocorreu um erro salvar o pagamento ao cliente!");
+            }
+        }
+        
     }
 }
