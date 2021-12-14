@@ -11,5 +11,6 @@ namespace Dominio.Interfaces.Repositorio
     public interface IPagamentoRepositorio : IBaseRepositorio<Pagamento>
     {
         Pagamento RetornaPagamentoId(int id);
+        Pagamento BuscarPorCpf(string cpf);
     }
 }
