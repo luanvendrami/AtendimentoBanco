@@ -60,9 +60,11 @@ namespace Dominio.Entidades
             ValorPagamentoComReajustes = ValoresFinais(0, (decimal)Juros, (decimal)Desconto);
         }
 
-        public Pagamento(int idCliente)
+        public Pagamento(int idCliente, int formaPagamento, decimal valorPago)
         {
             IdCliente = idCliente;
+            FormaPagamento = formaPagamento;
+            ValorPago = valorPago;
             DataVencimento = DateTime.Now.AddDays(30);
         }
 

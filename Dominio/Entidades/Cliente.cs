@@ -22,6 +22,7 @@ namespace Dominio.Entidades
 #nullable enable
         public virtual Pagamento? Pagamentos { get; set; }
         public virtual Endereco? Endereco { get; set; }
+        public virtual Compra? Compra { get; set; }
 #nullable disable
 
         //Construtor usada para o metodo de cadastro de clientes.
