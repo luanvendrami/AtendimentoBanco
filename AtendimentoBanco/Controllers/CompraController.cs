@@ -1,4 +1,5 @@
 ﻿using Dominio.Interfaces.Service;
+using Dominio.Modelos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -16,6 +17,20 @@ namespace AtendimentoBanco.Controllers
         public CompraController(ICompraService compraService)
         {
             _compraService = compraService;
+        } 
+
+        [HttpPost("CompraCliente")]
+        public ActionResult CompraCliente([FromForm] EfetuarCompraDto dto)
+        {
+            try
+            {
+                var retorno = _compraService.EfetuarCompra(dto);
+                return Ok(retorno);
+            }
+            catch
+            {
+                return BadRequest("As informações NÃO foram salvas!");
+            }
         }
     }
 }

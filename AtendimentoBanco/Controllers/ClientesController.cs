@@ -33,6 +33,20 @@ namespace AtendimentoBanco.Controllers
             }
         }
 
+        [HttpGet("ListaCompraPorCliente")]
+        public ActionResult CompraPorCliente([FromQuery] ListaCompraPorClienteDto dto)
+        {
+            try
+            {
+                var retorno = _cadastroClienteService.CompraPorCliente(dto);
+                return Ok(retorno);
+            }
+            catch
+            {
+                return BadRequest("As informações NÃO foram salvas!");
+            }
+        }
+
         [HttpGet("RetornaClienteId")]
         public ActionResult CadastrosId([FromQuery] int id)
         {

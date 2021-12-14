@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Aplicacao\CadastroCliente.csproj" />
+    <ProjectReference Include="..\Compra\Compra.csproj" />
     <ProjectReference Include="..\Dominio\Dominio.csproj" />
     <ProjectReference Include="..\Infra.Data\Infra.Data.csproj" />
   </ItemGroup>

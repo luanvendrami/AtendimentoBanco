@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Infra.Data.Mapeamento
 {
-    public class CompraMapeamento : IEntityTypeConfiguration<Compra>
+    public class CompraMapeamento : IEntityTypeConfiguration<EfetuarCompra>
     {
-        public void Configure(EntityTypeBuilder<Compra> builder)
+        public void Configure(EntityTypeBuilder<EfetuarCompra> builder)
         {
             builder.HasKey(p => p.Id);
 
@@ -45,7 +45,7 @@ namespace Infra.Data.Mapeamento
                 .HasColumnType("int")
                 .IsRequired();
 
-            builder.HasMany(x => x.CompraNavegation).WithOne().HasForeignKey(x => x.Id);
+            builder.HasOne(x => x.CompraNavegation).WithMany().HasForeignKey(x => x.IdCliente);
         }
     }
 }

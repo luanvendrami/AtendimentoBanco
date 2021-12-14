@@ -15,5 +15,6 @@ namespace Dominio.Interfaces.Service
         string AtualizarDados(int id, DadosDto dto);
         string DeletarDados(int id);
         List<Cliente> RetornaTodosClientes();
+        List<Cliente> CompraPorCliente(ListaCompraPorClienteDto dto);
     }
 }

@@ -35,7 +35,7 @@ namespace Infra.Data.Mapeamento
 
             builder.HasOne(x => x.Endereco).WithOne(x => x.EnderecoNavegation).HasForeignKey<Endereco>(x => x.IdCliente);
             builder.HasOne(x => x.Pagamentos).WithOne(x => x.PagamentoNavegation).HasForeignKey<Pagamento>(x => x.IdCliente);
-            builder.HasOne(x => x.Compra).WithMany(x => x.CompraNavegation).HasForeignKey(x => x.Id);
+            builder.HasOne(x => x.Compra).WithMany().HasForeignKey(x => x.Compra.IdCliente);
         }
     }
 }

@@ -50,5 +50,18 @@ namespace Infra.Data.Repositorio
                 .Include(x => x.Pagamentos)
                 .FirstOrDefault(x => x.NomeCompleto == nome || x.Cpf == cpf || x.Rg == rg);
         }
+
+        public Cliente ConsultarPorCpf(string cpf)
+        {
+            return _context.Cliente.AsNoTracking().FirstOrDefault(x => x.Cpf == cpf);
+        }
+
+        public List<Cliente> ConsultarPorCpfClienteCompra(string cpf)
+        {
+            return _context.Cliente
+                .Include(x => x.Compra)
+                .AsNoTracking().Where(x => x.Cpf == cpf).ToList();
+        }
+
     }
 }

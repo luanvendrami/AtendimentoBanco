@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 
 namespace Dominio.Interfaces.Repositorio
 {
-    public interface ICompraRepositorio : IBaseRepositorio<Compra>
+    public interface ICompraRepositorio : IBaseRepositorio<EfetuarCompra>
     {
+        EfetuarCompra RetornaCompraId(int id);
+        List<EfetuarCompra> ListaCompraPorCliente(int id);
     }
 }

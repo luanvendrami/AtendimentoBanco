@@ -15,5 +15,7 @@ namespace Dominio.Interfaces.Repositorio
         Cliente ConsultaId(int id);
         List<Cliente> RetornaClientes();
         Cliente ConsultaPorNome(string nome, string cpf, string rg);
+        Cliente ConsultarPorCpf(string cpf);
+        List<Cliente> ConsultarPorCpfClienteCompra(string cpf);
     }
 }

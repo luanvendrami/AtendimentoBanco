@@ -85,5 +85,11 @@ namespace CadastroCliente.Service
             _clienteRepositorio.Remover(consultaRepositorio.Id);
             return $"Deletado com sucesso!";
         }
+
+        public List<Cliente> CompraPorCliente(ListaCompraPorClienteDto dto)
+        {
+            var consultaCliente = _clienteRepositorio.ConsultarPorCpfClienteCompra(dto.Cpf);
+            return consultaCliente;
+        }
     }
 }
