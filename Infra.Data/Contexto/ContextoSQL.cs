@@ -12,5 +12,6 @@ namespace Infra.Data.Contexto
         public DbSet<Cliente> Cliente { get; set; }
         public DbSet<Endereco> Endereco { get; set; }
         public DbSet<Pagamento> Pagamento { get; set; }
+        public DbSet<Compra> Compra { get; set; }
     }
 }
