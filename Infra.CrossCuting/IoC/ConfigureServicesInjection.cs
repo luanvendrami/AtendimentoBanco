@@ -18,7 +18,6 @@ namespace Infra.CrossCuting.IoC
         public static void InjecaoServices(this IServiceCollection services)
         {
             services.AddScoped<IClienteService, ClienteService>();
-            services.AddScoped<IRecebimentoPagamentoService, RecebimentoPagamentoService>();
         }
 
         public static void InjecaoRepositorio(this IServiceCollection services)
@@ -26,6 +25,7 @@ namespace Infra.CrossCuting.IoC
             services.AddScoped<IClienteRepositorio, ClienteRepositorio>();
             services.AddScoped<IEnderecoRepositorio, EnderecoRepositorio>();
             services.AddScoped<IPagamentoRepositorio, PagamentoRepositorio>();
+            services.AddScoped<ICompraRepositorio, CompraRepositorio>();
         }
     }
 }
