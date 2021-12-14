@@ -16,5 +16,12 @@ namespace Infra.Data.Repositorio
         {
             return _context.Pagamento.AsNoTracking().FirstOrDefault(n => n.Id == id);
         }
+
+        public Pagamento BuscarPorCpf(string cpf)
+        {
+            return _context.Pagamento.AsNoTracking()
+                .Include(x => x.PagamentoNavegation)
+                .FirstOrDefault(x => x.PagamentoNavegation.Cpf == cpf);
+        }
     }
 }

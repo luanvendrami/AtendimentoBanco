@@ -23,6 +23,7 @@ namespace Infra.Data.Repositorio
                 .Include(x => x.Pagamentos)
                 .FirstOrDefault(x => x.Cpf == cpf || x.Rg == rg);
         }
+
         public Cliente RetornaClientId(int id)
         {
             return _context.Cliente.AsNoTracking()
