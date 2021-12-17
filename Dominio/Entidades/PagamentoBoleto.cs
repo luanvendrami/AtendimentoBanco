@@ -23,8 +23,7 @@ namespace Dominio.Entidades
             Endereco enderecoCobranca,
             Email email) : 
             base
-            (dataPagemento,
-                dataVencimento,
+            (dataVencimento,
                 total,
                 totalPago,
                 proprietarioPagamento,

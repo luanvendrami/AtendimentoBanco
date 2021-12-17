@@ -8,15 +8,16 @@ namespace Dominio.Entidades
 {
     public abstract class Inscricao
     {
-        protected Inscricao(DateTime? dataExpiracao)
+        private IList<Pagamento> _pagamento;
+        public Inscricao(DateTime? dataExpiracao)
         {
             DataInicial = DateTime.Now;
             UltimaAtualizacaoData = DateTime.Now;
             DataExpiracao = dataExpiracao;
             Ativo = true;
-            Pagamentos = new List<Pagamento>();
+            _pagamento = new List<Pagamento>();
         }
-
+         
         public DateTime DataInicial { get; private set; }
         public DateTime UltimaAtualizacaoData { get; private set; }
         public DateTime? DataExpiracao { get; private set; }
@@ -26,7 +27,7 @@ namespace Dominio.Entidades
 
         public void AddPagamento(Pagamento pagamento)
         {
-
+            _pagamento.Add(pagamento);
         }
 
         public void Ativado()

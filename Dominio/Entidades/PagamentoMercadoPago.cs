@@ -20,9 +20,7 @@ namespace Dominio.Entidades
             Documento documento,
             Endereco enderecoCobranca,
             Email email)
-            : base( 
-                  dataPagemento,
-                  dataVencimento,
+            : base(dataVencimento,
                   total,
                   totalPago,
                   proprietarioPagamento,

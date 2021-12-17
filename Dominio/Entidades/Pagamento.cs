@@ -19,10 +19,10 @@ namespace Dominio.Entidades
         public Endereco EnderecoCobranca { get; private set; }
         public Email Email { get; private set; }
 
-        public Pagamento(DateTime dataPagemento, DateTime dataVencimento, decimal total, decimal totalPago, string proprietarioPagamento, Documento documento, Endereco enderecoCobranca, Email email)
+        public Pagamento(DateTime dataVencimento, decimal total, decimal totalPago, string proprietarioPagamento, Documento documento, Endereco enderecoCobranca, Email email)
         {
             Numero = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 10).ToUpper();
-            DataPagemento = dataPagemento;
+            DataPagemento = DateTime.Now;
             DataVencimento = dataVencimento;
             Total = total;
             TotalPago = totalPago;
@@ -30,6 +30,6 @@ namespace Dominio.Entidades
             Documento = documento;
             EnderecoCobranca = enderecoCobranca;
             Email = email;
-        }
+        } 
     }
 }
