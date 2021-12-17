@@ -19,10 +19,11 @@ namespace Dominio.Entidades.ValueObject
         public string NumeroTelefone { get; private set; }
         public ETipoTelefone TipoTelefone { get; private set; }
 
-        public static string ValidaTelefone(string numeroTelefone)
+        public bool ValidaTelefone(string numeroTelefone)
         {
-            var telefone = Regex.Match(numeroTelefone, @"^(\+[0-9]{9})$").Success;
-            return telefone.ToString();
+            numeroTelefone = numeroTelefone.Replace("(", "").Replace(")", "").Replace(" ", "").Replace("-", "");
+            if (numeroTelefone.Length == 11) return true;
+            return false;       
         }
     }
 }

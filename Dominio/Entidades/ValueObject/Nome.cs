@@ -12,22 +12,17 @@ namespace Dominio.Entidades.ValueObject
         public string Sobrenome { get; private set; }
         public Nome(string primeiroNome, string sobrenome)
         {
-            PrimeiroNome = ValidaNome(primeiroNome);
-            Sobrenome = ValidaSobrenome(sobrenome);
+            PrimeiroNome = primeiroNome;
+            Sobrenome = sobrenome;
+            ValidaNulo();
         }
 
-        public static string ValidaNome(string primeiroNome)
+        public bool ValidaNulo()
         {
-            if (string.IsNullOrEmpty(primeiroNome) && primeiroNome.Length > 4)
-                return primeiroNome;
-            return "Erro ao cadastrar o nome.";
+            if (!string.IsNullOrEmpty(PrimeiroNome) && PrimeiroNome.Length >= 4 && !string.IsNullOrEmpty(Sobrenome) && Sobrenome.Length >= 4)
+                return true;
+            return false;
         }
 
-        public static string ValidaSobrenome(string sobrenome)
-        {
-            if (string.IsNullOrEmpty(sobrenome) && sobrenome.Length > 4)
-                return sobrenome;
-            return "Erro ao cadastrar o sobrenome";
-        }
     }
 }
