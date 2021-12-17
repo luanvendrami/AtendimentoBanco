@@ -12,17 +12,18 @@ namespace Dominio.Entidades.ValueObject
     {
         public Telefone(string numeroTelefone, ETipoTelefone tipoTelefone)
         {
-            NumeroTelefone = ValidaTelefone(numeroTelefone);
+            NumeroTelefone = numeroTelefone;
             TipoTelefone = tipoTelefone;
+            ValidaTelefone();
         }
 
         public string NumeroTelefone { get; private set; }
         public ETipoTelefone TipoTelefone { get; private set; }
 
-        public bool ValidaTelefone(string numeroTelefone)
+        public bool ValidaTelefone()
         {
-            numeroTelefone = numeroTelefone.Replace("(", "").Replace(")", "").Replace(" ", "").Replace("-", "");
-            if (numeroTelefone.Length == 11) return true;
+            NumeroTelefone = NumeroTelefone.Replace("(", "").Replace(")", "").Replace(" ", "").Replace("-", "");
+            if (NumeroTelefone.Length == 11) return true;
             return false;       
         }
     }
