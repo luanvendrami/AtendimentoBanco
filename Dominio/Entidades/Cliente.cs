@@ -13,6 +13,7 @@ namespace Dominio.Entidades
         public Documento Documento { get; private set; }
         public Email Email { get; private set; }
         public Endereco EnderecoEntrega { get; private set; }
+        public Telefone Telefone { get; private set; }
 
         public IReadOnlyCollection<Inscricao> Inscricoes { get; set; } 
         public Cliente(Nome nome, Documento documento, Email email)
