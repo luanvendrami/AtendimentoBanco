@@ -14,11 +14,13 @@ namespace Dominio.Entidades.ValueObject
 
         public Documento(string numero, ETipoDocumento tipo)
         {
-            Numero = ValidaCpf(numero);
+            Numero = numero;
             Tipo = tipo;
+            Validacao();
+            ValidaCpf(numero);
         }
 
-        public static string ValidaCpf(string cpf)
+        public bool ValidaCpf(string cpf)
         {
             int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
             int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
@@ -27,8 +29,8 @@ namespace Dominio.Entidades.ValueObject
 
             cpf = cpf.Trim();
             cpf = cpf.Replace(".", "").Replace("-", "");
-            if (cpf == null) return "Cpf Nulo.";
-            if (cpf.Length != 11) return "Número inválido.";
+            if (cpf == null) return false;
+            if (cpf.Length != 11) return false;
 
             tempCpf = cpf.Substring(0, 9);
             soma = 0;
@@ -54,7 +56,17 @@ namespace Dominio.Entidades.ValueObject
 
             digito += resto.ToString();
 
-            return cpf.EndsWith(digito).ToString();
+            return cpf.EndsWith(digito);
+        }
+
+        public bool Validacao()
+        {
+            if (Tipo == ETipoDocumento.CNPJ && Numero.Length == 14)
+                return true;
+
+            if (Tipo == ETipoDocumento.CPF && Numero.Length == 11)
+                return true;
+            return false;
         }
     }
 }
