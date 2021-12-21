@@ -33,6 +33,31 @@ namespace Dominio.Entidades
         {
             CodigoBarra = codigoBarra;
             NumeroBoleto = numeroBoleto;
+            AddDescontoBoleto();
+        }
+
+        public bool AddDescontoBoleto()
+        {
+            //decimal valorFinal = 0;
+            if(DataVencimento < DataPagemento)
+            {
+                //var data = DataVencimento.Subtract(DataPagemento).Ticks;
+                //valorFinal = Total * data;
+                return true;
+            }
+            return false;
+        }
+
+        public bool AddAcrescimoBoleto()
+        {
+            //decimal valorFinal = 0;
+            if (DataVencimento > DataPagemento)
+            {
+                //var data = DataVencimento.Subtract(DataPagemento).Ticks;
+                //valorFinal = Total * data;
+                return true;
+            }
+            return false;
         }
     }
 }
