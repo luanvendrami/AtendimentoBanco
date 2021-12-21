@@ -3,7 +3,7 @@ using Dominio.Entidades.ValueObject;
 using Dominio.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Testes
+namespace Testes.ValueObject
 {
     [TestClass]
     public class DocumentoTeste

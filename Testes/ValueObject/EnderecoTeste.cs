@@ -6,23 +6,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Testes
+namespace Testes.ValueObject
 {
     [TestClass]
-    public class NameTeste
+    public class EnderecoTeste
     {
         [TestMethod]
-        public void ValidaNomeFail()
+        public void ValidaEnderecoFail()
         {
-            var end = new Nome("", "say");
+            var end = new Endereco("", "numero", "complemento", "cidade", "estado", "pais", "89136000");
             Assert.IsFalse(end.ValidaNulo());
         }
 
         [TestMethod]
-        public void ValidaNomeValid()
+        public void ValidaEnderecoValid()
         {
-            var end = new Nome("Nome", "sobrenome");
+            var end = new Endereco("Luigui Sardagna", "100", "Casa", "Rodeio", "SC", "Brasil", "12345678");
             Assert.IsTrue(end.ValidaNulo());
         }
     }
 }
+

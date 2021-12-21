@@ -22,8 +22,8 @@ namespace Dominio.Entidades.ValueObject
 
         public bool ValidaTelefone()
         {
-            NumeroTelefone = NumeroTelefone.Replace("(", "").Replace(")", "").Replace(" ", "").Replace("-", "");
-            if (NumeroTelefone.Length == 11) return true;
+            if (NumeroTelefone.Length == 11 && TipoTelefone == ETipoTelefone.CELULAR) return true;
+            if (NumeroTelefone.Length == 10 && TipoTelefone == ETipoTelefone.RESIDENCIAL) return true;
             return false;       
         }
     }

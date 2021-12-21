@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Testes
+namespace Testes.ValueObject
 {
     [TestClass]
-    public class EmailTEste
+    public class EmailTeste
     {
         [TestMethod]
         public void ValidaEmailFail()
