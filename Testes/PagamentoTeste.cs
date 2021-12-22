@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace Testes
 {
-    [TestClass]
-    public class PagamentoTeste
-    {
+    //[TestClass]
+    //public class PagamentoTeste
+    //{
 
-        [TestMethod]
-        public void ValidaPagamentoFail()
-        {
-            var doc = new Pagamento("123", ETipoDocumento.CPF);
-            Assert.IsNotNull(doc.Validacao());
-        }
-    }
+    //    [TestMethod]
+    //    public void ValidaPagamentoFail()
+    //    {
+    //        var doc = new Pagamento("123", ETipoDocumento.CPF);
+    //        Assert.IsNotNull(doc.Validacao());
+    //    }
+    //}
 }

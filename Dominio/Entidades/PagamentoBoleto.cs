@@ -34,30 +34,51 @@ namespace Dominio.Entidades
             CodigoBarra = codigoBarra;
             NumeroBoleto = numeroBoleto;
             AddDescontoBoleto();
+            AddAcrescimoBoleto();
         }
 
         public bool AddDescontoBoleto()
         {
-            //decimal valorFinal = 0;
             if(DataVencimento < DataPagemento)
             {
-                //var data = DataVencimento.Subtract(DataPagemento).Ticks;
-                //valorFinal = Total * data;
+                CalculoDesconto();
                 return true;
             }
             return false;
         }
 
+        public decimal CalculoDesconto()
+        {
+            if (Total != 0)
+            {
+                var data = DataPagemento.Subtract(DataVencimento).Days;
+                var valor_final = ((double)Total * 0.01) * data;
+                decimal valor = Total - (decimal)valor_final;
+                return valor;
+            }
+            return 0;
+        }
+
         public bool AddAcrescimoBoleto()
         {
-            //decimal valorFinal = 0;
-            if (DataVencimento > DataPagemento)
+            
+            if (DataPagemento > DataVencimento)
             {
-                //var data = DataVencimento.Subtract(DataPagemento).Ticks;
-                //valorFinal = Total * data;
+                CalculoAcrescimo();
                 return true;
             }
             return false;
+        }
+
+        public decimal CalculoAcrescimo()
+        {   
+            if(Total != 0)
+            {
+                var data = DataVencimento.Subtract(DataPagemento).Days + 1;
+                var valor_final = ((double)Total * 0.01) * data + (double)Total;
+                return (decimal)valor_final;
+            }
+            return 0;           
         }
     }
 }
