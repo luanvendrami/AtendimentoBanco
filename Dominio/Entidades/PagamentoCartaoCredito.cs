@@ -37,5 +37,49 @@ namespace Dominio.Entidades
             NumeroCartao = numeroCartao;
             NumeroUltimaTransacao = numeroUltimaTransacao;
         }
+
+        public bool AddDescontoCartaoCredito()
+        {
+            if (DataVencimento < DataPagemento)
+            {
+                //CalculoDesconto();
+                return true;
+            }
+            return false;
+        }
+
+        public decimal CalculoDesconto()
+        {
+            if (Total != 0)
+            {
+                var data = DataPagemento.Subtract(DataVencimento).Days;
+                var valor_final = ((double)Total * 0.03) * data;
+                decimal valor = Total - (decimal)valor_final;
+                return valor;
+            }
+            return 0;
+        }
+
+        public bool AddAcrescimoCartaoCredito()
+        {
+
+            if (DataPagemento > DataVencimento)
+            {
+                //CalculoAcrescimo();
+                return true;
+            }
+            return false;
+        }
+
+        public decimal CalculoAcrescimo()
+        {
+            if (Total != 0)
+            {
+                var data = DataVencimento.Subtract(DataPagemento).Days + 1;
+                var valor_final = ((double)Total * 0.03) * data + (double)Total;
+                return (decimal)valor_final;
+            }
+            return 0;
+        }
     }
 }
