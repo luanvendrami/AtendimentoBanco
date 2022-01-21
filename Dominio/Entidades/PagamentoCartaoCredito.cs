@@ -36,6 +36,8 @@ namespace Dominio.Entidades
             NomeCartao = nomeCartao;
             NumeroCartao = numeroCartao;
             NumeroUltimaTransacao = numeroUltimaTransacao;
+            AddDescontoCartaoCredito();
+            AddAcrescimoCartaoCredito();
         }
 
         public bool AddDescontoCartaoCredito()

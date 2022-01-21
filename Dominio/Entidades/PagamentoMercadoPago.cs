@@ -29,6 +29,53 @@ namespace Dominio.Entidades
                   email )
         {
             CodigoTransacao = codigoTransacao;
+            AddDescontoMercadoPago();
+            AddAcrescimoMercadoPago();
+        }
+
+        public bool AddDescontoMercadoPago()
+        {
+            if (DataVencimento < DataPagemento)
+            {
+                //CalculoDesconto();
+                return true;
+            }
+            return false;
+        }
+
+        public decimal CalculoDesconto()
+        {
+            if (Total != 0)
+            {
+                var data = DataPagemento.Subtract(DataVencimento).Days;
+                var valor_final = ((double)Total * 0.01) * data;
+                decimal valor = Total - (decimal)valor_final;
+                return valor;
+            }
+            return 0;
+        }
+
+        public bool AddAcrescimoMercadoPago()
+        {
+
+            if (DataPagemento > DataVencimento)
+            {
+                //CalculoAcrescimo();
+                return true;
+            }
+            return false;
+        }
+
+        public decimal CalculoAcrescimo()
+        {
+            if (Total != 0)
+            {
+                var data = DataVencimento.Subtract(DataPagemento).Days + 1;
+                var valor_final = ((double)Total * 0.06) * data + (double)Total;
+                return (decimal)valor_final;
+            }
+            return 0;
         }
     }
 }
+
